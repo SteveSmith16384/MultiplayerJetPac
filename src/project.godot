@@ -1,0 +1,43 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+}
+
+[application]
+
+config/name="Multiplayer JetPac"
+run/main_scene="res://World.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=512
+window/size/height=384
+window/size/resizable=false
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input]
+
+xboxtest={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+
+[rendering]
+
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_environment="res://default_env.tres"
+quality/2d/gles2_use_nvidia_rect_flicker_workaround=true
