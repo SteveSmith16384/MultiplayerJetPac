@@ -1,13 +1,12 @@
 extends KinematicBody2D
 
-const ACCELERATION =3000# 6000
+const ACCELERATION =3500
 const MAX_SPEED_WALK_X = 5000
 const MAX_SPEED_X = 250
-const MAX_SPEED_Y = 150
-#const FRICTION = 100
+const MAX_SPEED_Y = 200
 const AIR_RESISTANCE = 10
-const GRAVITY = 90*2#4
-const JUMP_FORCE = 140*3#0
+const GRAVITY = 450
+const JUMP_FORCE = 800
 
 var motion = Vector2.ZERO
 
@@ -60,7 +59,17 @@ func _physics_process(delta):
 	motion.y = clamp(motion.y, -MAX_SPEED_Y, MAX_SPEED_Y)
 
 	motion = move_and_slide(motion, Vector2.UP)
-
+	
+	# Wrap
+	if self.position.x < 0:
+		self.position.x = 512
+	elif self.position.x > 512:
+		self.position.x = 0
+		
+#	print(str(self.position.y))
+	if self.position.y < 20:
+		self.position.y = 20
+		motion.y = motion.y * -0.7
 	pass
 	
 
