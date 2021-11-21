@@ -29,7 +29,7 @@ func _physics_process(delta):
 			motion.x = clamp(motion.x, -MAX_SPEED_X, MAX_SPEED_X)
 
 		# Clamp speed
-		sprite.flip_h = x_input < 0
+		sprite.flip_h = x_input > 0
 	else:
 		animationPlayer.play("Stand")
 	

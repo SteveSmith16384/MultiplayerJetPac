@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Player.png" type="Texture" id=1]
+[ext_resource path="res://assets/jetpac_walking_left.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.49897, 5.9892 )
+extents = Vector2( 13.0584, 21.8948 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Jump"
@@ -33,10 +33,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 3, 4, 5, 3 ]
+"values": [ 1, 2, 3, 3, 5 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -62,10 +62,11 @@ extents = Vector2( 4.53024, 0.927536 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -10 )
+position = Vector2( 6.24334, -10.446 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
-hframes = 7
-frame = 6
+hframes = 4
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0936451, -10.1007 )
