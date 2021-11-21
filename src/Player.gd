@@ -1,44 +1,77 @@
 extends KinematicBody2D
 
-const TARGET_FPS = 60
-const ACCELERATION = 80
-const MAX_SPEED = 64
-const FRICTION = 100
-const AIR_RESISTANCE = 1
-const GRAVITY = 4
-const JUMP_FORCE = 140
+const ACCELERATION =3000# 6000
+const MAX_SPEED_WALK_X = 5000
+const MAX_SPEED_X = 250
+const MAX_SPEED_Y = 150
+#const FRICTION = 100
+const AIR_RESISTANCE = 10
+const GRAVITY = 90*2#4
+const JUMP_FORCE = 140*3#0
 
 var motion = Vector2.ZERO
 
 onready var sprite = $Sprite
 onready var animationPlayer = $AnimationPlayer
 
+var is_on_floor = false
+
 func _physics_process(delta):
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
 	if x_input != 0:
 		animationPlayer.play("Run")
-		motion.x += x_input * ACCELERATION * delta * TARGET_FPS
-		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+		if is_on_floor:
+			# Move straight away
+			motion.x = x_input * MAX_SPEED_WALK_X * delta
+		else:
+			# Accelerate with jetpac
+			motion.x += x_input * ACCELERATION * delta
+			motion.x = clamp(motion.x, -MAX_SPEED_X, MAX_SPEED_X)
+
+		# Clamp speed
 		sprite.flip_h = x_input < 0
 	else:
 		animationPlayer.play("Stand")
 	
-	motion.y += GRAVITY * delta * TARGET_FPS
+	motion.y += GRAVITY * delta
 	
-	if is_on_floor():
+	# Slow player down
+	if is_on_floor:
 		if x_input == 0:
-			motion.x = lerp(motion.x, 0, FRICTION * delta)
-			
-		if Input.is_action_pressed("ui_up"):
-			motion.y = -JUMP_FORCE
+			motion.x = 0
 	else:
-		animationPlayer.play("Jump")
+		motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
+#			print("Is NOT on floor")
+#			
+#	else:
+#		animationPlayer.play("Jump")
+#		
+#		if Input.is_action_pressed("ui_up"):
+#			motion.y = -JUMP_FORCE
+#		
+#		if x_input == 0:
+#			motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
+#	pass
 		
-		if Input.is_action_just_released("ui_up") and motion.y < -JUMP_FORCE/2:
-			motion.y = -JUMP_FORCE#/2
+	if Input.is_action_pressed("ui_up"):
+		motion.y -= JUMP_FORCE * delta
 		
-		if x_input == 0:
-			motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
-	
+	motion.y = clamp(motion.y, -MAX_SPEED_Y, MAX_SPEED_Y)
+
 	motion = move_and_slide(motion, Vector2.UP)
+
+	pass
+	
+
+
+func _on_FloorArea2D_body_entered(body):
+	if body.is_in_group("floors"):
+		is_on_floor = true
+	pass
+
+
+func _on_FloorArea2D_body_exited(body):
+	if body.is_in_group("floors"):
+		is_on_floor = false
+	pass

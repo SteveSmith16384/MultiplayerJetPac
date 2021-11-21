@@ -12,7 +12,9 @@ extents = Vector2( 256.711, 10 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 167, 39 )
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="." groups=[
+"floors",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2( 258.36, 372.57 )

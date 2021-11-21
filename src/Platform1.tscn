@@ -5,7 +5,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.7566, 7.94589 )
 
-[node name="Platform1" type="StaticBody2D"]
+[node name="Platform1" type="StaticBody2D" groups=[
+"floors",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
