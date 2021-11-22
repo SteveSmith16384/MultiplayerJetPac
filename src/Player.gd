@@ -8,6 +8,7 @@ const AIR_RESISTANCE = 10
 const GRAVITY = 450
 const JUMP_FORCE = 800
 
+const expl_class = preload("res://Explosion.tscn")
 const laser_class = preload("res://Laser2.tscn")
 
 var motion = Vector2.ZERO
@@ -59,7 +60,8 @@ func _physics_process(delta):
 	motion.y += GRAVITY * delta
 	if Input.is_action_pressed("ui_up"):
 		motion.y -= JUMP_FORCE * delta
-		
+		#if is_on_floor:
+			
 	motion.y = clamp(motion.y, -MAX_SPEED_Y, MAX_SPEED_Y)
 
 	walking_sprite.flip_h = motion.x > 0
@@ -98,6 +100,10 @@ func _on_FloorArea2D_body_entered(body):
 func _on_FloorArea2D_body_exited(body):
 	if body.is_in_group("floors"):
 		is_on_floor = false
+		var expl = self.expl_class.instance()
+		expl.position = self.position
+		var main = get_tree().get_root().get_node("World")
+		main.add_child(expl)
 	pass
 
 

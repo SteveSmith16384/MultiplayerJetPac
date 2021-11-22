@@ -4,6 +4,7 @@
 [ext_resource path="res://DroppedItem.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.87037, 5.42838 )
 
 [node name="DroppedItem" type="Node2D" groups=[
 "dropped_items",

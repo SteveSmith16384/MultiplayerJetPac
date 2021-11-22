@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/jetpac_ship.png" type="Texture" id=1]
+[ext_resource path="res://assets/jetpac_ship_magenta.png" type="Texture" id=2]
+[ext_resource path="res://ShipConstruction.gd" type="Script" id=3]
+
+[node name="ShipConstruction" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="White_Ship" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 0 )
+
+[node name="Mag_Ship" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 0 )

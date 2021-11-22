@@ -1,6 +1,11 @@
 extends Node2D
 
 
+func _ready():
+#	hide_all()
+	pass
+	
+
 func hide_all():
 	$Fuel.visible = false
 	$Ship1_1.visible = false

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glowing_circle.png-49ab3290464f5a6dcf55fd0e057ae670.stex"
+path="res://.import/jetpac_ship_magenta.png-0509fdb1669342008c988bccd9db2dbf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/glowing_circle.png"
-dest_files=[ "res://.import/glowing_circle.png-49ab3290464f5a6dcf55fd0e057ae670.stex" ]
+source_file="res://assets/jetpac_ship_magenta.png"
+dest_files=[ "res://.import/jetpac_ship_magenta.png-0509fdb1669342008c988bccd9db2dbf.stex" ]
 
 [params]
 

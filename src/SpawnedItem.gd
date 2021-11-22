@@ -7,7 +7,7 @@ func _ready():
 	
 
 func _physics_process(delta):
-	var motion = Vector2(0, 5000*delta)
+	var motion = Vector2(0, 4000*delta)
 	self.move_and_slide(motion)
 	pass
 	

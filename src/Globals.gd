@@ -9,7 +9,6 @@ const PLAYER_INVINCIBLE = false and !RELEASE_MODE
 
 enum ObjectType {Fuel, Ship1, Ship2, Ship3}
 
-
 const START_LIVES = 9
 
 # Other settings

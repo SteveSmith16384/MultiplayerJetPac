@@ -4,10 +4,10 @@
 [ext_resource path="res://SpawnedItem.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.0003, 10.7743 )
+extents = Vector2( 16.0003, 15.6124 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 20.046, 13.8286 )
+extents = Vector2( 21.8292, 19.4773 )
 
 [node name="SpawnedItem" type="KinematicBody2D"]
 script = ExtResource( 2 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/jetpac_left1.png-68c82a1d761ccc585cde9cbf644d51af.stex"
+path="res://.import/jetpac_ship.png-a8ec08e9fe45bbcfd893e8cb3b833471.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jetpac_left1.png"
-dest_files=[ "res://.import/jetpac_left1.png-68c82a1d761ccc585cde9cbf644d51af.stex" ]
+source_file="res://assets/jetpac_ship.png"
+dest_files=[ "res://.import/jetpac_ship.png-a8ec08e9fe45bbcfd893e8cb3b833471.stex" ]
 
 [params]
 
