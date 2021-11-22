@@ -1,28 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/main_floor.png" type="Texture" id=2]
+[ext_resource path="res://Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Platform1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 256.711, 8.20306 )
+extents = Vector2( 8.14777, 177.802 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.27719, 7.84735 )
 
 [node name="World" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 167, 39 )
 
-[node name="Floor" type="StaticBody2D" parent="." groups=[
-"floors",
-]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 258.36, 372.57 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Floor"]
-position = Vector2( 255.956, 373.421 )
-texture = ExtResource( 2 )
+[node name="Floor" parent="." instance=ExtResource( 2 )]
 
 [node name="Platform1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 84.757, 151.503 )
@@ -32,3 +27,19 @@ position = Vector2( 257.449, 227.785 )
 
 [node name="Platform3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 428.023, 83.6976 )
+
+[node name="DropzoneArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropzoneArea2D"]
+position = Vector2( 340.116, 178.299 )
+shape = SubResource( 1 )
+
+[node name="LandingArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LandingArea2D"]
+position = Vector2( 340.515, 358.693 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="DropzoneArea2D" to="." method="_on_DropzoneArea2D_body_entered"]
+[connection signal="area_entered" from="LandingArea2D" to="." method="_on_LandingArea2D_area_entered"]
+[connection signal="body_entered" from="LandingArea2D" to="." method="_on_LandingArea2D_body_entered"]

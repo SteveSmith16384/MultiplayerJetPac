@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/ship1_3.png" type="Texture" id=1]
+[ext_resource path="res://assets/jetpac_fuel.png" type="Texture" id=2]
+[ext_resource path="res://assets/ship1_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/ship1_2.png" type="Texture" id=4]
+[ext_resource path="res://ItemSprites.gd" type="Script" id=5]
+
+[node name="ItemSprites" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Fuel" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="Ship1_1" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Ship1_2" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="Ship1_3" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )

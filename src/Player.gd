@@ -20,6 +20,9 @@ onready var animationPlayer = $AnimationPlayer
 
 var is_on_floor = false
 
+var carrying #: Globals.ObjectType
+
+
 func _physics_process(delta):
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
@@ -100,4 +103,25 @@ func _on_FloorArea2D_body_exited(body):
 
 func _on_CanShootTimer_timeout():
 	can_shoot = true
-	pass # Replace with function body.
+	pass
+	
+	
+func carry_item(type):
+	carrying = type#Globals.ObjectType.Fuel
+	$ItemSprites.show_item(type)
+	pass
+
+	
+func remove_item():
+	self.carrying = null
+	$ItemSprites.hide_all()
+	pass
+
+	
+func is_carrying_item():
+	return self.carrying != null
+	pass
+
+
+func get_carried_item_type():
+	return carrying
