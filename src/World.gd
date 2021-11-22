@@ -3,23 +3,23 @@ extends Node2D
 var spawned_item_class = preload("res://SpawnedItem.tscn")
 var dropped_item_class = preload("res://DroppedItem.tscn")
 
-var level_stage = 1 # SHip 1-3 then fuel
+var level_stage = 0 # SHip 1-3 then fuel
 
 func _ready():
 	spawn_item()
 	
-	$ShipConstruction.show_ship(33)
-	$ShipConstruction.show_fuel(33)
+	$ShipConstruction.show_ship(0)
+#	$ShipConstruction.show_fuel(0)
 	pass
 
 
 func spawn_item():
 	var item = spawned_item_class.instance()
-	if level_stage == 1:
+	if level_stage == 0:
 		item.type = Globals.ObjectType.Ship1
-	elif level_stage == 2:
+	elif level_stage == 1:
 		item.type = Globals.ObjectType.Ship2
-	elif level_stage == 3:
+	elif level_stage == 2:
 		item.type = Globals.ObjectType.Ship3
 	else:
 		item.type = Globals.ObjectType.Fuel
@@ -52,10 +52,21 @@ func _on_LandingArea2D_area_entered(area):
 		area.owner.queue_free()
 
 		level_stage += 1
-		if level_stage < 10:
+		update_spaceship()
+		if level_stage < 9:
 			self.spawn_item()
 		else:
-			# todo - next level!
+			# todo - next level! Or winner
 			pass
 		pass
 	pass
+
+
+func update_spaceship():
+	if level_stage <= 3:
+		$ShipConstruction.show_ship(level_stage*33)
+	else:
+		$ShipConstruction.show_fuel((level_stage-3)*17)
+	pass
+	
+	

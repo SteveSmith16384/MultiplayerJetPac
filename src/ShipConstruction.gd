@@ -1,6 +1,9 @@
 extends Node2D
 
 func show_ship(pcent):
+	if pcent > 100:
+		pcent = 100
+		
 	$Mag_Ship.visible = false
 	
 	var height = $White_Ship.texture.get_height() #* 2 # 2 since it's scaled
@@ -13,6 +16,9 @@ func show_ship(pcent):
 
 
 func show_fuel(pcent):
+	if pcent > 100:
+		pcent = 100
+		
 	show_ship(100)#$White_Ship.region_enabled = false
 
 	$Mag_Ship.visible = true
