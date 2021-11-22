@@ -5,7 +5,7 @@
 [ext_resource path="res://Platform1.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 256.711, 10 )
+extents = Vector2( 256.711, 8.20306 )
 
 [node name="World" type="Node2D"]
 
@@ -21,8 +21,7 @@ position = Vector2( 258.36, 372.57 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Floor"]
-position = Vector2( 253.62, 371.085 )
-scale = Vector2( 2, 2 )
+position = Vector2( 255.956, 373.421 )
 texture = ExtResource( 2 )
 
 [node name="Platform1" parent="." instance=ExtResource( 3 )]

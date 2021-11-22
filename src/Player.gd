@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const ACCELERATION =3500
+const ACCELERATION = 3500
 const MAX_SPEED_WALK_X = 5000
 const MAX_SPEED_X = 250
 const MAX_SPEED_Y = 200
@@ -11,6 +11,8 @@ const JUMP_FORCE = 800
 const laser_class = preload("res://Laser2.tscn")
 
 var motion = Vector2.ZERO
+var last_dir = 1 # -1 or 1
+var can_shoot = true
 
 onready var walking_sprite = $Sprite
 onready var flying_sprite = $FlyingSprites
@@ -21,6 +23,9 @@ var is_on_floor = false
 func _physics_process(delta):
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
+	if x_input != 0:
+		last_dir = sign(x_input)
+		
 	if is_on_floor:
 		walking_sprite.visible = true
 		flying_sprite.visible = false
@@ -70,11 +75,13 @@ func _physics_process(delta):
 		self.position.y = 20
 		motion.y = motion.y * -0.7
 
-	if Input.is_action_pressed("shoot_p1"):
+	if can_shoot and Input.is_action_pressed("shoot_p1"):
 		var laser = laser_class.instance()
-		laser.position = self.position
+		laser.position = $MuzzlePosition2D.global_position
+		laser.dir = Vector2(last_dir, 0)
 		var main = get_tree().get_root().get_node("World")
 		main.add_child(laser)
+		can_shoot = false
 	pass
 	
 
@@ -89,3 +96,8 @@ func _on_FloorArea2D_body_exited(body):
 	if body.is_in_group("floors"):
 		is_on_floor = false
 	pass
+
+
+func _on_CanShootTimer_timeout():
+	can_shoot = true
+	pass # Replace with function body.

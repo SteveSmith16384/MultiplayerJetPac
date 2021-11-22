@@ -122,5 +122,13 @@ texture = ExtResource( 3 )
 hframes = 4
 frame = 2
 
+[node name="CanShootTimer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[node name="MuzzlePosition2D" type="Position2D" parent="."]
+position = Vector2( -3.30356, -12.0344 )
+
 [connection signal="body_entered" from="FloorArea2D" to="." method="_on_FloorArea2D_body_entered"]
 [connection signal="body_exited" from="FloorArea2D" to="." method="_on_FloorArea2D_body_exited"]
+[connection signal="timeout" from="CanShootTimer" to="." method="_on_CanShootTimer_timeout"]
