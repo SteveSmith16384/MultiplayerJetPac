@@ -1,10 +1,28 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/jetpac_walking_left.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/jetpac_flying_left.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.0584, 21.8948 )
+extents = Vector2( 11.9582, 20.7839 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Flying"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FlyingSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Jump"
@@ -24,19 +42,31 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "Run"
-length = 0.6
+length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1, 2, 3, 3, 5 ]
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -56,7 +86,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 4.53024, 0.927536 )
+extents = Vector2( 8.00394, 0.927536 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -65,14 +95,16 @@ script = ExtResource( 2 )
 position = Vector2( 6.24334, -10.446 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
+offset = Vector2( -4, 0 )
 hframes = 4
-frame = 2
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.0936451, -10.1007 )
+position = Vector2( -4.16583, -9.11588 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Flying = SubResource( 6 )
 anims/Jump = SubResource( 2 )
 anims/Run = SubResource( 3 )
 anims/Stand = SubResource( 4 )
@@ -80,8 +112,15 @@ anims/Stand = SubResource( 4 )
 [node name="FloorArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorArea2D"]
-position = Vector2( 0, -2.97302 )
+position = Vector2( -4.31087, 13.0813 )
 shape = SubResource( 5 )
+
+[node name="FlyingSprites" type="Sprite" parent="."]
+position = Vector2( 0.943871, -5.42728 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 4
+frame = 2
 
 [connection signal="body_entered" from="FloorArea2D" to="." method="_on_FloorArea2D_body_entered"]
 [connection signal="body_exited" from="FloorArea2D" to="." method="_on_FloorArea2D_body_exited"]

@@ -8,9 +8,12 @@ const AIR_RESISTANCE = 10
 const GRAVITY = 450
 const JUMP_FORCE = 800
 
+const laser_class = preload("res://Laser2.tscn")
+
 var motion = Vector2.ZERO
 
-onready var sprite = $Sprite
+onready var walking_sprite = $Sprite
+onready var flying_sprite = $FlyingSprites
 onready var animationPlayer = $AnimationPlayer
 
 var is_on_floor = false
@@ -18,22 +21,25 @@ var is_on_floor = false
 func _physics_process(delta):
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
-	if x_input != 0:
-		animationPlayer.play("Run")
-		if is_on_floor:
+	if is_on_floor:
+		walking_sprite.visible = true
+		flying_sprite.visible = false
+		
+		if x_input != 0:
+			animationPlayer.play("Run")
 			# Move straight away
 			motion.x = x_input * MAX_SPEED_WALK_X * delta
 		else:
-			# Accelerate with jetpac
-			motion.x += x_input * ACCELERATION * delta
-			motion.x = clamp(motion.x, -MAX_SPEED_X, MAX_SPEED_X)
-
-		# Clamp speed
-		sprite.flip_h = x_input > 0
+			animationPlayer.play("Stand")
 	else:
-		animationPlayer.play("Stand")
-	
-	motion.y += GRAVITY * delta
+		walking_sprite.visible = false
+		flying_sprite.visible = true
+		
+		animationPlayer.play("Flying")
+		
+		# Accelerate with jetpac
+		motion.x += x_input * ACCELERATION * delta
+		motion.x = clamp(motion.x, -MAX_SPEED_X, MAX_SPEED_X)
 	
 	# Slow player down
 	if is_on_floor:
@@ -41,23 +47,16 @@ func _physics_process(delta):
 			motion.x = 0
 	else:
 		motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
-#			print("Is NOT on floor")
-#			
-#	else:
-#		animationPlayer.play("Jump")
-#		
-#		if Input.is_action_pressed("ui_up"):
-#			motion.y = -JUMP_FORCE
-#		
-#		if x_input == 0:
-#			motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
-#	pass
 		
+	motion.y += GRAVITY * delta
 	if Input.is_action_pressed("ui_up"):
 		motion.y -= JUMP_FORCE * delta
 		
 	motion.y = clamp(motion.y, -MAX_SPEED_Y, MAX_SPEED_Y)
 
+	walking_sprite.flip_h = motion.x > 0
+	flying_sprite.flip_h = motion.x > 0
+	
 	motion = move_and_slide(motion, Vector2.UP)
 	
 	# Wrap
@@ -70,6 +69,12 @@ func _physics_process(delta):
 	if self.position.y < 20:
 		self.position.y = 20
 		motion.y = motion.y * -0.7
+
+	if Input.is_action_pressed("shoot_p1"):
+		var laser = laser_class.instance()
+		laser.position = self.position
+		var main = get_tree().get_root().get_node("World")
+		main.add_child(laser)
 	pass
 	
 
