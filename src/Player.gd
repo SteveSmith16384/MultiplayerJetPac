@@ -14,13 +14,14 @@ const laser_class = preload("res://Laser2.tscn")
 var motion = Vector2.ZERO
 var last_dir = 1 # -1 or 1
 var can_shoot = true
+var invincible = true
 
 onready var walking_sprite = $Sprite
 onready var flying_sprite = $FlyingSprites
 onready var animationPlayer = $AnimationPlayer
 
+var side : int
 var is_on_floor = false
-
 var carrying #: Globals.ObjectType
 
 
@@ -130,3 +131,8 @@ func is_carrying_item():
 
 func get_carried_item_type():
 	return carrying
+
+
+func _on_InvincibleTimer_timeout():
+	invincible = false
+	pass # Replace with function body.

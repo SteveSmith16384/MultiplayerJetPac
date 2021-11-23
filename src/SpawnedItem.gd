@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+var side : int
 var type
 
 func _ready():

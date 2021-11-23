@@ -1,22 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://DropzoneArea2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Platform1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ShipConstruction.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World.gd" type="Script" id=5]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2.85318, 177.802 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8.27719, 16.6159 )
+[ext_resource path="res://LandingArea2D.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 169.378, 342.248 )
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
 
@@ -29,21 +21,71 @@ position = Vector2( 257.449, 227.785 )
 [node name="Platform3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 428.023, 83.6976 )
 
-[node name="ShipConstruction" parent="." instance=ExtResource( 4 )]
-position = Vector2( 325, 285 )
+[node name="StartPositions" type="Node" parent="."]
 
-[node name="DropzoneArea2D" type="Area2D" parent="."]
-position = Vector2( 340, 178 )
+[node name="StartPosition_0" type="Position2D" parent="StartPositions"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DropzoneArea2D"]
-shape = SubResource( 1 )
+[node name="StartPosition_1" type="Position2D" parent="StartPositions"]
+position = Vector2( 132.862, 324.586 )
 
-[node name="LandingArea2D" type="Area2D" parent="."]
+[node name="StartPosition_2" type="Position2D" parent="StartPositions"]
+position = Vector2( 220.315, 322.904 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LandingArea2D"]
-position = Vector2( 340.118, 373.773 )
-shape = SubResource( 2 )
+[node name="StartPosition_3" type="Position2D" parent="StartPositions"]
+position = Vector2( 316.177, 322.904 )
 
-[connection signal="body_entered" from="DropzoneArea2D" to="." method="_on_DropzoneArea2D_body_entered"]
-[connection signal="area_entered" from="LandingArea2D" to="." method="_on_LandingArea2D_area_entered"]
-[connection signal="body_entered" from="LandingArea2D" to="." method="_on_LandingArea2D_body_entered"]
+[node name="Ships" type="Node" parent="."]
+
+[node name="ShipConstruction_0" parent="Ships" instance=ExtResource( 4 )]
+position = Vector2( 27.3227, 320.318 )
+
+[node name="DropzoneArea_0" parent="Ships" instance=ExtResource( 1 )]
+position = Vector2( 319.819, 178 )
+
+[node name="LandingArea_0" parent="Ships" instance=ExtResource( 6 )]
+position = Vector2( -20.1815, 0 )
+
+[node name="ShipConstruction_1" parent="Ships" instance=ExtResource( 4 )]
+position = Vector2( 69.3675, 320.318 )
+side = 1
+
+[node name="DropzoneArea_1" parent="Ships" instance=ExtResource( 1 )]
+position = Vector2( 361.863, 178 )
+side = 1
+
+[node name="LandingArea_1" parent="Ships" instance=ExtResource( 6 )]
+position = Vector2( 21.8633, 0 )
+side = 1
+
+[node name="ShipConstruction_2" parent="Ships" instance=ExtResource( 4 )]
+position = Vector2( -144.22, 320.318 )
+side = 2
+
+[node name="DropzoneArea_2" parent="Ships" instance=ExtResource( 1 )]
+position = Vector2( 148.276, 178 )
+side = 2
+
+[node name="LandingArea_2" parent="Ships" instance=ExtResource( 6 )]
+position = Vector2( -191.724, 0 )
+side = 2
+
+[node name="ShipConstruction_3" parent="Ships" instance=ExtResource( 4 )]
+position = Vector2( -100.566, 321.209 )
+side = 3
+
+[node name="DropzoneArea_3" parent="Ships" instance=ExtResource( 1 )]
+position = Vector2( 191.93, 178.891 )
+side = 3
+
+[node name="LandingArea_3" parent="Ships" instance=ExtResource( 6 )]
+position = Vector2( -148.07, 0.89093 )
+side = 3
+
+[connection signal="body_entered" from="Ships/DropzoneArea_0" to="." method="_on_DropzoneArea_0_body_entered"]
+[connection signal="area_entered" from="Ships/LandingArea_0" to="." method="_on_LandingArea_0_area_entered"]
+[connection signal="body_entered" from="Ships/DropzoneArea_1" to="." method="_on_DropzoneArea_1_body_entered"]
+[connection signal="area_entered" from="Ships/LandingArea_1" to="." method="_on_LandingArea_1_area_entered"]
+[connection signal="body_entered" from="Ships/DropzoneArea_2" to="." method="_on_DropzoneArea_2_body_entered"]
+[connection signal="area_entered" from="Ships/LandingArea_2" to="." method="_on_LandingArea_2_area_entered"]
+[connection signal="body_entered" from="Ships/DropzoneArea_3" to="." method="_on_DropzoneArea_3_body_entered"]
+[connection signal="area_entered" from="Ships/LandingArea_3" to="." method="_on_LandingArea_3_area_entered"]

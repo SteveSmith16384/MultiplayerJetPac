@@ -1,5 +1,21 @@
 extends Node2D
 
+export var side : int
+var level : int = 0
+
+func _ready():
+	show_ship(0)
+	pass
+	
+	
+func update_spaceship(side):
+	if level <= 3:
+		show_ship(level*33)
+	else:
+		show_fuel((level-3)*17)
+	pass
+	
+	
 func show_ship(pcent):
 	if pcent > 100:
 		pcent = 100

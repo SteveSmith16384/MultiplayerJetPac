@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.9582, 20.7839 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "Flying"
 length = 0.4
 loop = true
@@ -25,8 +25,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Jump"
+[sub_resource type="Animation" id=3]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -41,8 +40,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Run"
+[sub_resource type="Animation" id=4]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -70,8 +68,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Stand"
+[sub_resource type="Animation" id=5]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -86,7 +83,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 8.00394, 0.927536 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -107,16 +104,16 @@ position = Vector2( -4.16583, -9.11588 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Flying = SubResource( 6 )
-anims/Jump = SubResource( 2 )
-anims/Run = SubResource( 3 )
-anims/Stand = SubResource( 4 )
+anims/Flying = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/Run = SubResource( 4 )
+anims/Stand = SubResource( 5 )
 
 [node name="FloorArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorArea2D"]
 position = Vector2( -4.31087, 13.0813 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="FlyingSprites" type="Sprite" parent="."]
 position = Vector2( 0.943871, -5.42728 )
@@ -134,6 +131,12 @@ position = Vector2( -3.30356, -12.0344 )
 
 [node name="ItemSprites" parent="." instance=ExtResource( 4 )]
 
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="FloorArea2D" to="." method="_on_FloorArea2D_body_entered"]
 [connection signal="body_exited" from="FloorArea2D" to="." method="_on_FloorArea2D_body_exited"]
 [connection signal="timeout" from="CanShootTimer" to="." method="_on_CanShootTimer_timeout"]
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]
