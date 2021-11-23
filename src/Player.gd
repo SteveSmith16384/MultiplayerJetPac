@@ -75,7 +75,6 @@ func _physics_process(delta):
 	elif self.position.x > 512:
 		self.position.x = 0
 		
-#	print(str(self.position.y))
 	if self.position.y < 20:
 		self.position.y = 20
 		motion.y = motion.y * -0.7
