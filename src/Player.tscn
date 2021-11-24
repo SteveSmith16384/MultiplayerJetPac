@@ -126,8 +126,11 @@ frame = 2
 wait_time = 0.05
 autostart = true
 
-[node name="MuzzlePosition2D" type="Position2D" parent="."]
-position = Vector2( -3.30356, -12.0344 )
+[node name="MuzzlePosition_Left" type="Position2D" parent="."]
+position = Vector2( -33.0356, -10.3826 )
+
+[node name="MuzzlePosition_Right" type="Position2D" parent="."]
+position = Vector2( 22.889, -11.3265 )
 
 [node name="ItemSprites" parent="." instance=ExtResource( 4 )]
 

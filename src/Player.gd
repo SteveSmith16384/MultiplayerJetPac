@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
-const ACCELERATION = 3500
-const MAX_SPEED_WALK_X = 5000
+const ACCELERATION = 15 #0#3500
+const MAX_SPEED_WALK_X = 5000/50
 const MAX_SPEED_X = 250
 const MAX_SPEED_Y = 200
-const AIR_RESISTANCE = 10
-const GRAVITY = 450
-const JUMP_FORCE = 800
+const AIR_RESISTANCE = .01
+const GRAVITY = 10#450
+const JUMP_FORCE = 50#800
 
 const expl_class = preload("res://Explosion.tscn")
 const laser_class = preload("res://Laser2.tscn")
@@ -23,10 +23,11 @@ onready var animationPlayer = $AnimationPlayer
 var side : int
 var is_on_floor = false
 var carrying #: Globals.ObjectType
+onready var main = get_tree().get_root().get_node("World")
 
 
 func _physics_process(delta):
-	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	var x_input = Input.get_action_strength("move_right"+str(side)) - Input.get_action_strength("move_left"+str(side))
 	
 	if x_input != 0:
 		last_dir = sign(x_input)
@@ -38,7 +39,7 @@ func _physics_process(delta):
 		if x_input != 0:
 			animationPlayer.play("Run")
 			# Move straight away
-			motion.x = x_input * MAX_SPEED_WALK_X * delta
+			motion.x = x_input * MAX_SPEED_WALK_X
 		else:
 			animationPlayer.play("Stand")
 	else:
@@ -48,7 +49,7 @@ func _physics_process(delta):
 		animationPlayer.play("Flying")
 		
 		# Accelerate with jetpac
-		motion.x += x_input * ACCELERATION * delta
+		motion.x += x_input * ACCELERATION
 		motion.x = clamp(motion.x, -MAX_SPEED_X, MAX_SPEED_X)
 	
 	# Slow player down
@@ -56,11 +57,12 @@ func _physics_process(delta):
 		if x_input == 0:
 			motion.x = 0
 	else:
-		motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
-		
-	motion.y += GRAVITY * delta
-	if Input.is_action_pressed("ui_up"):
-		motion.y -= JUMP_FORCE * delta
+		motion.x = lerp(motion.x, 0, AIR_RESISTANCE)
+		pass
+			
+	motion.y += GRAVITY
+	if Input.is_action_pressed("jump"+str(side)):
+		motion.y -= JUMP_FORCE
 		#if is_on_floor:
 			
 	motion.y = clamp(motion.y, -MAX_SPEED_Y, MAX_SPEED_Y)
@@ -80,16 +82,17 @@ func _physics_process(delta):
 		self.position.y = 20
 		motion.y = motion.y * -0.7
 
-	if can_shoot and Input.is_action_pressed("shoot_p1"):
+	if can_shoot and Input.is_action_pressed("primary_fire"+str(side)):
 		var laser = laser_class.instance()
-		laser.position = $MuzzlePosition2D.global_position
+		if last_dir == -1:
+			laser.position = $MuzzlePosition_Left.global_position
+		else:
+			laser.position = $MuzzlePosition_Right.global_position
 		laser.dir = Vector2(last_dir, 0)
-		var main = get_tree().get_root().get_node("World")
 		main.add_child(laser)
 		can_shoot = false
 	pass
 	
-
 
 func _on_FloorArea2D_body_entered(body):
 	if body.is_in_group("floors"):
