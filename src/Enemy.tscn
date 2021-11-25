@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/rocket.png" type="Texture" id=1]
 [ext_resource path="res://Enemy.gd" type="Script" id=2]
+[ext_resource path="res://LoopAround.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 2.875 )
@@ -10,6 +11,8 @@ extents = Vector2( 6, 2.875 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+
+[node name="LoopAround" parent="." instance=ExtResource( 3 )]
 
 [node name="Area2D" type="Area2D" parent="."]
 

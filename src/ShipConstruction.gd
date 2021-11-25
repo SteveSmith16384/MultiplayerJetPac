@@ -1,7 +1,8 @@
 extends Node2D
 
 export var side : int
-var level : int = 0
+var level : int = 0  # SHip 1-3 then fuel
+
 
 func _ready():
 	show_ship(0)

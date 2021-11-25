@@ -1,25 +1,25 @@
 extends KinematicBody2D
 
-const ACCELERATION = 15 #0#3500
+const ACCELERATION = 20 #0#3500
 const MAX_SPEED_WALK_X = 5000/50
 const MAX_SPEED_X = 250
 const MAX_SPEED_Y = 200
-const AIR_RESISTANCE = .01
+const AIR_RESISTANCE = .05
 const GRAVITY = 10#450
 const JUMP_FORCE = 50#800
 
 const expl_class = preload("res://Explosion.tscn")
 const laser_class = preload("res://Laser2.tscn")
 
-var motion = Vector2.ZERO
-var last_dir = 1 # -1 or 1
-var can_shoot = true
-var invincible = true
-
 onready var walking_sprite = $Sprite
 onready var flying_sprite = $FlyingSprites
 onready var animationPlayer = $AnimationPlayer
 
+var motion = Vector2.ZERO
+var last_dir = 1 # -1 or 1
+var can_shoot = true
+var invincible = true
+var alive = true
 var side : int
 var is_on_floor = false
 var carrying #: Globals.ObjectType
@@ -27,7 +27,10 @@ onready var main = get_tree().get_root().get_node("World")
 
 
 func _physics_process(delta):
-	var x_input = Input.get_action_strength("move_right"+str(side)) - Input.get_action_strength("move_left"+str(side))
+	if alive == false:
+		return
+		
+	var x_input = Input.get_action_strength("move_right" + str(side)) - Input.get_action_strength("move_left" + str(side))
 	
 	if x_input != 0:
 		last_dir = sign(x_input)
@@ -73,10 +76,10 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2.UP)
 	
 	# Wrap
-	if self.position.x < 0:
-		self.position.x = 512
-	elif self.position.x > 512:
-		self.position.x = 0
+#	if self.position.x < 0:
+#		self.position.x = 512
+#	elif self.position.x > 512:
+#		self.position.x = 0
 		
 	if self.position.y < 20:
 		self.position.y = 20
@@ -138,4 +141,24 @@ func get_carried_item_type():
 
 func _on_InvincibleTimer_timeout():
 	invincible = false
-	pass # Replace with function body.
+	pass
+
+
+func die():
+	if invincible:
+		return
+		
+	self.position = Vector2(-1000, -1000)
+	alive = false
+	$RespawnTimer.start()
+	pass
+	
+
+
+func _on_RespawnTimer_timeout():
+	alive = true
+	invincible = true
+	motion = Vector2()
+	main.set_player_start_pos(self)
+	$InvincibleTimer.start()
+	pass

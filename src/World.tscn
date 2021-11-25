@@ -27,6 +27,7 @@ position = Vector2( 428.023, 83.6976 )
 [node name="StartPositions" type="Node" parent="."]
 
 [node name="StartPosition_0" type="Position2D" parent="StartPositions"]
+position = Vector2( 57.211, 322.077 )
 
 [node name="StartPosition_1" type="Position2D" parent="StartPositions"]
 position = Vector2( 132.862, 324.586 )
@@ -84,6 +85,10 @@ side = 3
 position = Vector2( -148.07, 0.89093 )
 side = 3
 
+[node name="SpawnEnemyTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="body_entered" from="Ships/DropzoneArea_0" to="." method="_on_DropzoneArea_0_body_entered"]
 [connection signal="area_entered" from="Ships/LandingArea_0" to="." method="_on_LandingArea_0_area_entered"]
 [connection signal="body_entered" from="Ships/DropzoneArea_1" to="." method="_on_DropzoneArea_1_body_entered"]
@@ -92,3 +97,4 @@ side = 3
 [connection signal="area_entered" from="Ships/LandingArea_2" to="." method="_on_LandingArea_2_area_entered"]
 [connection signal="body_entered" from="Ships/DropzoneArea_3" to="." method="_on_DropzoneArea_3_body_entered"]
 [connection signal="area_entered" from="Ships/LandingArea_3" to="." method="_on_LandingArea_3_area_entered"]
+[connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_SpaenEnemyTimer_timeout"]

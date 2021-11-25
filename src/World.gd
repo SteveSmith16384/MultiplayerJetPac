@@ -3,20 +3,25 @@ extends Node2D
 var player_class = preload("res://Player.tscn")
 var spawned_item_class = preload("res://SpawnedItem.tscn")
 var dropped_item_class = preload("res://DroppedItem.tscn")
-
-#var level_stage = 0 # SHip 1-3 then fuel
+var enemy_class = preload("res://Enemy.tscn")
 
 func _ready():
 	for side in range(0, 4):#Globals.player_nums: #  todo - re-add 
 		var player = player_class.instance()
 		player.side = side
-		player.position = get_node("StartPositions/StartPosition_" + str(side)).position
+		set_player_start_pos(player)
 		add_child(player)
 
 #	spawn_item() todo
 	pass
 
 
+func set_player_start_pos(player):
+	var pos: Vector2 = get_node("StartPositions/StartPosition_" + str(player.side)).position
+	player.position = pos
+	pass
+	
+	
 func spawn_item(side, level):
 	var item = spawned_item_class.instance()
 	if level == 0:
@@ -109,3 +114,9 @@ func body_entered_dropzone_area(dropzone_side, body):
 	pass
 	
 
+
+
+func _on_SpaenEnemyTimer_timeout():
+	var enemy = enemy_class.instance()
+	add_child(enemy)
+	pass

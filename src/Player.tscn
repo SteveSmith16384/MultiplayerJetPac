@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/jetpac_walking_left.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/jetpac_flying_left.png" type="Texture" id=3]
 [ext_resource path="res://ItemSprites.tscn" type="PackedScene" id=4]
+[ext_resource path="res://LoopAround.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.9582, 20.7839 )
@@ -91,6 +92,8 @@ extents = Vector2( 8.00394, 0.927536 )
 ]]
 script = ExtResource( 2 )
 
+[node name="LoopAround" parent="." instance=ExtResource( 5 )]
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 6.24334, -10.446 )
 scale = Vector2( 2, 2 )
@@ -139,7 +142,12 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="body_entered" from="FloorArea2D" to="." method="_on_FloorArea2D_body_entered"]
 [connection signal="body_exited" from="FloorArea2D" to="." method="_on_FloorArea2D_body_exited"]
 [connection signal="timeout" from="CanShootTimer" to="." method="_on_CanShootTimer_timeout"]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_RespawnTimer_timeout"]
