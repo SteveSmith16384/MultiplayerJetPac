@@ -19,8 +19,8 @@ func _on_Area2D_body_entered(body):
 		self.queue_free()
 		body.die()
 		pass
-	else: #if body.is_in_group("lasers"):
+	else:
 		self.queue_free()
 		pass
 	
-	pass # Replace with function body.
+	pass

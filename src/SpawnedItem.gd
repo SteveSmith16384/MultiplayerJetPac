@@ -8,7 +8,7 @@ func _ready():
 	
 
 func _physics_process(delta):
-	var motion = Vector2(0, 4000)
+	var motion = Vector2(0, 40)
 	self.move_and_slide(motion)
 	pass
 	
@@ -16,7 +16,8 @@ func _physics_process(delta):
 
 func _on_CollectArea2D_body_entered(body):
 	if body.is_in_group("players"):
-		body.carry_item(type)
-		self.queue_free()
-		pass
+		if body.side == side:
+			body.carry_item(type)
+			self.queue_free()
+			pass
 	pass

@@ -8,7 +8,6 @@ const AIR_RESISTANCE = .05
 const GRAVITY = 10#450
 const JUMP_FORCE = 50#800
 
-const expl_class = preload("res://Explosion.tscn")
 const laser_class = preload("res://Laser2.tscn")
 
 onready var walking_sprite = $Sprite
@@ -66,7 +65,6 @@ func _physics_process(delta):
 	motion.y += GRAVITY
 	if Input.is_action_pressed("jump"+str(side)):
 		motion.y -= JUMP_FORCE
-		#if is_on_floor:
 			
 	motion.y = clamp(motion.y, -MAX_SPEED_Y, MAX_SPEED_Y)
 
@@ -106,10 +104,7 @@ func _on_FloorArea2D_body_entered(body):
 func _on_FloorArea2D_body_exited(body):
 	if body.is_in_group("floors"):
 		is_on_floor = false
-		var expl = self.expl_class.instance()
-		expl.position = self.position
-		var main = get_tree().get_root().get_node("World")
-		main.add_child(expl)
+		main.show_explosion(self)
 	pass
 
 
@@ -119,7 +114,7 @@ func _on_CanShootTimer_timeout():
 	
 	
 func carry_item(type):
-	carrying = type#Globals.ObjectType.Fuel
+	carrying = type
 	$ItemSprites.show_item(type)
 	pass
 
@@ -150,6 +145,7 @@ func die():
 		
 	self.position = Vector2(-1000, -1000)
 	alive = false
+	main.show_explosion(self)
 	$RespawnTimer.start()
 	pass
 	
