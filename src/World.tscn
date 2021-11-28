@@ -41,7 +41,7 @@ position = Vector2( 316.177, 322.904 )
 [node name="Ships" type="Node" parent="."]
 
 [node name="ShipConstruction_0" parent="Ships" instance=ExtResource( 4 )]
-position = Vector2( 27.3227, 320.318 )
+position = Vector2( 304, 286 )
 
 [node name="DropzoneArea_0" parent="Ships" instance=ExtResource( 1 )]
 position = Vector2( 319.819, 178 )
@@ -50,7 +50,7 @@ position = Vector2( 319.819, 178 )
 position = Vector2( -20.1815, 0 )
 
 [node name="ShipConstruction_1" parent="Ships" instance=ExtResource( 4 )]
-position = Vector2( 69.3675, 320.318 )
+position = Vector2( 361.899, 310.848 )
 side = 1
 
 [node name="DropzoneArea_1" parent="Ships" instance=ExtResource( 1 )]
@@ -62,7 +62,7 @@ position = Vector2( 21.8633, 0 )
 side = 1
 
 [node name="ShipConstruction_2" parent="Ships" instance=ExtResource( 4 )]
-position = Vector2( -144.22, 320.318 )
+position = Vector2( 148.743, 321.44 )
 side = 2
 
 [node name="DropzoneArea_2" parent="Ships" instance=ExtResource( 1 )]
@@ -74,7 +74,7 @@ position = Vector2( -191.724, 0 )
 side = 2
 
 [node name="ShipConstruction_3" parent="Ships" instance=ExtResource( 4 )]
-position = Vector2( -100.566, 321.209 )
+position = Vector2( 191.539, 320.27 )
 side = 3
 
 [node name="DropzoneArea_3" parent="Ships" instance=ExtResource( 1 )]
@@ -82,7 +82,7 @@ position = Vector2( 191.93, 178.891 )
 side = 3
 
 [node name="LandingArea_3" parent="Ships" instance=ExtResource( 6 )]
-position = Vector2( -148.07, 0.89093 )
+position = Vector2( -148.07, 0 )
 side = 3
 
 [node name="SpawnEnemyTimer" type="Timer" parent="."]
