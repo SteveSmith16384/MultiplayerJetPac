@@ -7,7 +7,7 @@ const enemy_class = preload("res://Enemy.tscn")
 const expl_class = preload("res://Explosion.tscn")
 
 func _ready():
-	for side in range(0, 2):#Globals.player_nums: #  todo - re-add 
+	for side in Globals.player_nums: # range(0, 2):# todo - re-add 
 		var player = player_class.instance()
 		player.side = side
 		set_player_start_pos(player)

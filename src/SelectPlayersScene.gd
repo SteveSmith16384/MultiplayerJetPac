@@ -12,19 +12,18 @@ func _process(delta):
 	for i in range(0,4):
 		if Input.is_action_just_pressed("primary_fire" + str(i)) or Input.is_action_just_pressed("jump" + str(i)):
 			if Globals.player_nums.has(i) == false:
-				#append_text("Player " + str(i) + " added")
 				Globals.player_nums.push_back(i)
 				#var c = self.get_child_count()
-				var human = get_node("Human_White" + str(i+1))
+				var human = find_node("SinglePlayerSprite_" + str(i))
 				human.visible = true
-				$AudioStreamPlayer_PlayerJoined.play()
+#				$AudioStreamPlayer_PlayerJoined.play()
 				pass
 			pass
 		pass
 		
 	if Input.is_action_just_pressed("start_game"):
 		if Globals.player_nums.size() > 0:
-			get_tree().change_scene("res://Main.tscn")
+			get_tree().change_scene("res://World.tscn")
 	pass
 	
 
