@@ -7,15 +7,23 @@ const enemy_class = preload("res://Enemy.tscn")
 const expl_class = preload("res://Explosion.tscn")
 
 func _ready():
-	for side in range(0, 1):#Globals.player_nums: #  todo - re-add 
+	for side in range(0, 2):#Globals.player_nums: #  todo - re-add 
 		var player = player_class.instance()
 		player.side = side
 		set_player_start_pos(player)
 		add_child(player)
 		spawn_item(side, 0)
 		
-		# Position ship relative to dropzone
-		var shipconstruction
+		if side > 0:
+			# Position ship relative to dropzone
+			var ship0 = $Ships/ShipConstruction_0
+			var dropzone0 = $Ships/DropzoneArea_0
+			var diff : Vector2 = dropzone0.position - ship0.position
+
+			var ship = get_node("Ships/ShipConstruction_" + str(side))
+			var dropzone = get_node("Ships/DropzoneArea_" + str(side))
+			ship.position.x = dropzone.position.x - diff.x
+			ship.position.y = dropzone.position.y - diff.y
 	pass
 
 
@@ -63,6 +71,7 @@ func _on_LandingArea_3_area_entered(area):
 
 
 func area_entered_landing_area(landing_side, area):
+	#var parent = area.owner
 	if area.owner.is_in_group("dropped_items") == false:
 		return
 		
@@ -73,14 +82,13 @@ func area_entered_landing_area(landing_side, area):
 
 	var spaceship = self.get_node("Ships/ShipConstruction_" + str(landing_side))
 	spaceship.level += 1
-	spaceship.update_spaceship(landing_side)
+	spaceship.update_spaceship()
 	if spaceship.level < 9:
 		self.spawn_item(landing_side, spaceship.level)
 	else:
 		# todo - next level! Or winner
 		pass
 	pass
-
 
 
 func _on_DropzoneArea_0_body_entered(body):
@@ -112,7 +120,9 @@ func body_entered_dropzone_area(dropzone, body):
 			var dropped_item = dropped_item_class.instance()
 			dropped_item.position.x = dropzone.position.x
 			dropped_item.position.y = body.position.y
-			dropped_item.side == body.side
+			dropped_item.side = dropzone.side
+#			print(str(dropped_item.side))
+#			print(str(dropzone.side))
 			dropped_item.get_node("ItemSprites").show_item(body.get_carried_item_type())
 			self.add_child(dropped_item)
 
@@ -122,6 +132,9 @@ func body_entered_dropzone_area(dropzone, body):
 	
 
 func _on_SpaenEnemyTimer_timeout():
+	if Globals.NO_ENEMIES:
+		return
+		
 	var enemy = enemy_class.instance()
 	add_child(enemy)
 	pass
@@ -130,7 +143,7 @@ func _on_SpaenEnemyTimer_timeout():
 func show_explosion(owner):
 	var expl = self.expl_class.instance()
 	expl.position = owner.position
-	add_child(expl)
+	call_deferred("add_child", expl)
 	pass
 	
 	

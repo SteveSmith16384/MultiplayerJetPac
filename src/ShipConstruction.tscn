@@ -7,12 +7,20 @@
 [node name="ShipConstruction" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="ColorRect_DEBUGGING" type="ColorRect" parent="."]
+visible = false
+margin_right = 32.0
+margin_bottom = 96.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="White_Ship" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 16, 0 )
+region_rect = Rect2( 0, 0, 16, 48 )
 
 [node name="Mag_Ship" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )

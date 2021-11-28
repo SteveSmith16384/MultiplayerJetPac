@@ -9,7 +9,7 @@ func _ready():
 	pass
 	
 	
-func update_spaceship(side):
+func update_spaceship():
 	if level <= 3:
 		show_ship(level*33)
 	else:

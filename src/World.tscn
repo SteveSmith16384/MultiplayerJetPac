@@ -78,7 +78,7 @@ position = Vector2( 191.539, 320.27 )
 side = 3
 
 [node name="DropzoneArea_3" parent="Ships" instance=ExtResource( 1 )]
-position = Vector2( 191.93, 178.891 )
+position = Vector2( 191.93, 178 )
 side = 3
 
 [node name="LandingArea_3" parent="Ships" instance=ExtResource( 6 )]

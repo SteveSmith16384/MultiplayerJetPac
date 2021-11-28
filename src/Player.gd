@@ -25,7 +25,7 @@ var carrying #: Globals.ObjectType
 onready var main = get_tree().get_root().get_node("World")
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if alive == false:
 		return
 		
