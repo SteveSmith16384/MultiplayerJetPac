@@ -29,6 +29,11 @@ var carrying #: Globals.ObjectType
 onready var main = get_tree().get_root().get_node("World")
 var bullet_count : int = 0
 
+func _ready():
+	$AudioStreamPlayer_Shoot.stream = load("res://assets/sfx/sfx_deathscream_robot" + str(side+1) + ".wav")
+	pass
+	
+	
 func _physics_process(_delta):
 	if alive == false:
 		return
@@ -121,6 +126,7 @@ func _physics_process(_delta):
 					laser.position = $MuzzlePosition_Right.global_position
 				laser.dir = Vector2(last_dir, 0)
 				main.add_child(laser)
+				$AudioStreamPlayer_Shoot.play()
 				can_shoot = false
 				bullet_count += 10
 			else:

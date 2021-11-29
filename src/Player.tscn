@@ -194,6 +194,8 @@ autostart = true
 wait_time = 4.0
 one_shot = true
 
+[node name="AudioStreamPlayer_Shoot" type="AudioStreamPlayer" parent="."]
+
 [connection signal="body_entered" from="FloorArea2D" to="." method="_on_FloorArea2D_body_entered"]
 [connection signal="body_exited" from="FloorArea2D" to="." method="_on_FloorArea2D_body_exited"]
 [connection signal="timeout" from="CanShootTimer" to="." method="_on_CanShootTimer_timeout"]
