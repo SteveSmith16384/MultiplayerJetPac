@@ -20,5 +20,6 @@ func _on_Area2D_body_entered(body):
 		body.die()
 
 	main.show_explosion(self)
+	main.enemy_destroyed()
 	self.queue_free()
 	pass

@@ -6,10 +6,13 @@ var level : int = 0  # SHip 1-3 then fuel
 
 func _ready():
 	show_ship(0)
+	$AudioStreamPlayer_Loaded.stream = load("res://assets/sfx/sfx_movement_portal" + str(side+1) + ".wav")
 	pass
 	
 	
 func update_spaceship():
+	level += 1
+	$AudioStreamPlayer_Loaded.play()
 	if level <= 3:
 		show_ship(level*33)
 	else:

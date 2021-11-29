@@ -86,7 +86,6 @@ func area_entered_landing_area(landing_side, area):
 	area.owner.queue_free()
 
 	var spaceship = self.get_node("Ships/ShipConstruction_" + str(landing_side))
-	spaceship.level += 1
 	spaceship.update_spaceship()
 	if spaceship.level < 9:
 		self.spawn_item(landing_side, spaceship.level)
@@ -169,4 +168,10 @@ func show_winner(side):
 	var node = find_node("WinnerNode")
 	node.visible = true
 	pass
+	
+
+func enemy_destroyed():
+	$AudioStreamPlayer_EnemyDestroyed.play()
+	pass
+	
 	

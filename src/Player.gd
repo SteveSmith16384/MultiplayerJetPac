@@ -1,21 +1,21 @@
 extends KinematicBody2D
 
-const ACCELERATION = 20 #0#3500
+const ACCELERATION = 20
 const MAX_SPEED_WALK_X = 5000/50
 const MAX_SPEED_X = 250
 const MAX_SPEED_Y = 200
 const AIR_RESISTANCE = .05
-const GRAVITY = 10#450
-const JUMP_FORCE = 50#800
+const GRAVITY = 10
+const JUMP_FORCE = 50
 const MAX_BULLETS = 100
 
 const laser_class = preload("res://Laser2.tscn")
+onready var main = get_tree().get_root().get_node("World")
 
 onready var walking_left_sprite = $WalkingLeftSprites
 onready var walking_right_sprite = $WalkingRightSprites
 onready var flying_left_sprite = $FlyingLeftSprites
 onready var flying_right_sprite = $FlyingRightSprites
-
 onready var animationPlayer = $AnimationPlayer
 
 var motion = Vector2.ZERO
@@ -26,11 +26,11 @@ var alive = true
 var side : int
 var is_on_floor = false
 var carrying #: Globals.ObjectType
-onready var main = get_tree().get_root().get_node("World")
 var bullet_count : int = 0
 
 func _ready():
 	$AudioStreamPlayer_Shoot.stream = load("res://assets/sfx/sfx_deathscream_robot" + str(side+1) + ".wav")
+	$AudioStreamPlayer_Pickup.stream = load("res://assets/sfx/sfx_movement_portal" + str(side+1) + ".wav")
 	pass
 	
 	
@@ -161,6 +161,7 @@ func _on_CanShootTimer_timeout():
 func carry_item(type):
 	carrying = type
 	$ItemSprites.show_item(type)
+	$AudioStreamPlayer_Pickup.play()
 	pass
 
 	
@@ -188,6 +189,7 @@ func die():
 	if invincible:
 		return
 		
+	$AudioStreamPlayer_Died.play()
 	self.position = Vector2(-1000, -1000)
 	alive = false
 	main.show_explosion(self)
@@ -202,3 +204,9 @@ func _on_RespawnTimer_timeout():
 	main.set_player_start_pos(self)
 	$InvincibleTimer.start()
 	pass
+
+
+func play_pickup():
+	$AudioStreamPlayer_Pickup.play()
+	pass
+	

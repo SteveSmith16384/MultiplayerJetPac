@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://DropzoneArea2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Floor.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/DefaultFont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://SinglePlayerSprite.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/sfx/sfx_exp_cluster4.wav" type="AudioStream" id=10]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
@@ -126,6 +127,9 @@ text = "PLAYER X IS THE WINNER"
 
 [node name="WinnerSprite" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer/VBoxContainer" instance=ExtResource( 9 )]
 scale = Vector2( 4, 4 )
+
+[node name="AudioStreamPlayer_EnemyDestroyed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 
 [connection signal="body_entered" from="Ships/DropzoneArea_0" to="." method="_on_DropzoneArea_0_body_entered"]
 [connection signal="area_entered" from="Ships/LandingArea_0" to="." method="_on_LandingArea_0_area_entered"]
