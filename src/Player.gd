@@ -7,6 +7,7 @@ const MAX_SPEED_Y = 200
 const AIR_RESISTANCE = .05
 const GRAVITY = 10#450
 const JUMP_FORCE = 50#800
+const MAX_BULLETS = 100
 
 const laser_class = preload("res://Laser2.tscn")
 
@@ -15,7 +16,7 @@ onready var flying_sprite = $FlyingSprites
 onready var animationPlayer = $AnimationPlayer
 
 var motion = Vector2.ZERO
-var last_dir = 1 # -1 or 1
+var last_dir : int = 1 # -1 or 1
 var can_shoot = true
 var invincible = true
 var alive = true
@@ -23,10 +24,13 @@ var side : int
 var is_on_floor = false
 var carrying #: Globals.ObjectType
 onready var main = get_tree().get_root().get_node("World")
-
+var bullet_count : int = 0
 
 func _physics_process(_delta):
 	if alive == false:
+		return
+		
+	if main.game_over:
 		return
 		
 	var x_input = Input.get_action_strength("move_right" + str(side)) - Input.get_action_strength("move_left" + str(side))
@@ -83,15 +87,26 @@ func _physics_process(_delta):
 		self.position.y = 20
 		motion.y = motion.y * -0.7
 
-	if can_shoot and Input.is_action_pressed("primary_fire"+str(side)):
-		var laser = laser_class.instance()
-		if last_dir == -1:
-			laser.position = $MuzzlePosition_Left.global_position
+	if can_shoot:
+		if Input.is_action_pressed("primary_fire"+str(side)):
+			if bullet_count < MAX_BULLETS:
+				var laser = laser_class.instance()
+				if last_dir == -1:
+					laser.position = $MuzzlePosition_Left.global_position
+				else:
+					laser.position = $MuzzlePosition_Right.global_position
+				laser.dir = Vector2(last_dir, 0)
+				main.add_child(laser)
+				can_shoot = false
+				bullet_count += 10
+			else:
+				bullet_count -= 1
+				pass
 		else:
-			laser.position = $MuzzlePosition_Right.global_position
-		laser.dir = Vector2(last_dir, 0)
-		main.add_child(laser)
-		can_shoot = false
+			bullet_count -= 1
+		print(str(bullet_count))
+		if bullet_count < 0:
+			bullet_count = 0
 	pass
 	
 
@@ -149,7 +164,6 @@ func die():
 	$RespawnTimer.start()
 	pass
 	
-
 
 func _on_RespawnTimer_timeout():
 	alive = true

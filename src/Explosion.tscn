@@ -8,9 +8,9 @@
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 2 ) ],
-"loop": false,
+"loop": true,
 "name": "default",
-"speed": 2.0
+"speed": 1.0
 } ]
 
 [node name="Explosion" type="Node2D"]

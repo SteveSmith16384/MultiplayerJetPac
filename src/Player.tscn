@@ -93,8 +93,6 @@ extents = Vector2( 8.00394, 0.927536 )
 ]]
 script = ExtResource( 2 )
 
-[node name="SetColourFromSide" parent="." instance=ExtResource( 6 )]
-
 [node name="LoopAround" parent="." instance=ExtResource( 5 )]
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -104,6 +102,8 @@ texture = ExtResource( 1 )
 offset = Vector2( -4, 0 )
 hframes = 4
 frame = 3
+
+[node name="SetColourFromSide" parent="Sprite" instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -4.16583, -9.11588 )
@@ -128,8 +128,10 @@ texture = ExtResource( 3 )
 hframes = 4
 frame = 2
 
+[node name="SetColourFromSide" parent="FlyingSprites" instance=ExtResource( 6 )]
+
 [node name="CanShootTimer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.1
 autostart = true
 
 [node name="MuzzlePosition_Left" type="Position2D" parent="."]

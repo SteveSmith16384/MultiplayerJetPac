@@ -7,7 +7,8 @@ var colors = [Color(1.0, 0.0, 0.0, 1.0),
 
 
 func _ready():
-	var side = owner.side
-	self.get_parent().modulate = colors[side];
-	pass # Replace with function body.
-
+	if "side" in owner:
+		self.get_parent().modulate = colors[owner.side];
+	elif "side" in owner.owner:
+		self.get_parent().modulate = colors[owner.owner.side];
+	pass

@@ -6,6 +6,8 @@ const dropped_item_class = preload("res://DroppedItem.tscn")
 const enemy_class = preload("res://Enemy.tscn")
 const expl_class = preload("res://Explosion.tscn")
 
+var game_over = false
+
 func _ready():
 	for side in Globals.player_nums: # range(0, 2):# todo - re-add 
 		var player = player_class.instance()
@@ -34,6 +36,9 @@ func set_player_start_pos(player):
 	
 	
 func spawn_item(side, level):
+	if game_over:
+		return
+		
 	var item = spawned_item_class.instance()
 	if level == 0:
 		item.type = Globals.ObjectType.Ship1
@@ -86,7 +91,7 @@ func area_entered_landing_area(landing_side, area):
 	if spaceship.level < 9:
 		self.spawn_item(landing_side, spaceship.level)
 	else:
-		# todo - next level! Or winner
+		show_winner(landing_side)
 		pass
 	pass
 
@@ -135,6 +140,9 @@ func _on_SpaenEnemyTimer_timeout():
 	if Globals.NO_ENEMIES:
 		return
 		
+	if game_over:
+		return
+		
 	var enemy = enemy_class.instance()
 	add_child(enemy)
 	pass
@@ -146,4 +154,19 @@ func show_explosion(owner):
 	call_deferred("add_child", expl)
 	pass
 	
+	
+func show_winner(side):
+	if game_over:
+		return
+		
+	game_over = true
+	var label = self.find_node("WinnerLabel")
+	label.text = "PLAYER " + str(side) + " IS THE WINNER!"
+	
+	var sprite = find_node("WinnerSprite")
+	sprite.side = side
+
+	var node = find_node("WinnerNode")
+	node.visible = true
+	pass
 	
