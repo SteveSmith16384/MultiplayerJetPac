@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://SelectPlayersScene.gd" type="Script" id=1]
 [ext_resource path="res://SinglePlayerSprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/DefaultFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/music/Battle.ogg" type="AudioStream" id=4]
 
 [node name="SelectPlayersScene" type="Node2D"]
 script = ExtResource( 1 )
@@ -47,3 +48,7 @@ text = "PRESS FIRE TO JOIN, ENTER TO START
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer_Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
