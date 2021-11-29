@@ -61,7 +61,8 @@ func _physics_process(_delta):
 		elif x_input > 0:
 			animationPlayer.play("Run_Right")
 		else:
-			animationPlayer.play("Stand")
+			#animationPlayer.play("Stand")
+			pass
 	else:
 		walking_left_sprite.visible = false
 		walking_right_sprite.visible = false
@@ -127,7 +128,7 @@ func _physics_process(_delta):
 				pass
 		else:
 			bullet_count -= 1
-		print(str(bullet_count))
+#		print(str(bullet_count))
 		if bullet_count < 0:
 			bullet_count = 0
 	pass
