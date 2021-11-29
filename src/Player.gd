@@ -11,8 +11,11 @@ const MAX_BULLETS = 100
 
 const laser_class = preload("res://Laser2.tscn")
 
-onready var walking_sprite = $Sprite
-onready var flying_sprite = $FlyingSprites
+onready var walking_left_sprite = $WalkingLeftSprites
+onready var walking_right_sprite = $WalkingRightSprites
+onready var flying_left_sprite = $FlyingLeftSprites
+onready var flying_right_sprite = $FlyingRightSprites
+
 onready var animationPlayer = $AnimationPlayer
 
 var motion = Vector2.ZERO
@@ -39,20 +42,40 @@ func _physics_process(_delta):
 		last_dir = sign(x_input)
 		
 	if is_on_floor:
-		walking_sprite.visible = true
-		flying_sprite.visible = false
+		flying_left_sprite.visible = false
+		flying_right_sprite.visible = false
 		
+		if last_dir < 0:
+			walking_left_sprite.visible = true
+			walking_right_sprite.visible = false
+		else:
+			walking_left_sprite.visible = false
+			walking_right_sprite.visible = true
+			
 		if x_input != 0:
-			animationPlayer.play("Run")
 			# Move straight away
 			motion.x = x_input * MAX_SPEED_WALK_X
+
+		if x_input < 0:
+			animationPlayer.play("Run_Left")
+		elif x_input > 0:
+			animationPlayer.play("Run_Right")
 		else:
 			animationPlayer.play("Stand")
 	else:
-		walking_sprite.visible = false
-		flying_sprite.visible = true
+		walking_left_sprite.visible = false
+		walking_right_sprite.visible = false
 		
-		animationPlayer.play("Flying")
+		if last_dir < 0:
+			flying_left_sprite.visible = true
+			flying_right_sprite.visible = false
+			animationPlayer.play("Flying_Left")
+		else:
+			flying_left_sprite.visible = false
+			flying_right_sprite.visible = true
+			animationPlayer.play("Flying_Right")
+		
+#		animationPlayer.play("Flying")
 		
 		# Accelerate with jetpac
 		motion.x += x_input * ACCELERATION
@@ -72,8 +95,8 @@ func _physics_process(_delta):
 			
 	motion.y = clamp(motion.y, -MAX_SPEED_Y, MAX_SPEED_Y)
 
-	walking_sprite.flip_h = motion.x > 0
-	flying_sprite.flip_h = motion.x > 0
+#	walking_sprite.flip_h = motion.x > 0
+#	flying_sprite.flip_h = motion.x > 0
 	
 	motion = move_and_slide(motion, Vector2.UP)
 	
