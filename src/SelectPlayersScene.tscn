@@ -22,20 +22,21 @@ __meta__ = {
 
 [node name="SinglePlayerSprite_0" parent="CanvasLayer/HBoxContainer" instance=ExtResource( 2 )]
 visible = false
+position = Vector2( -140.614, -22.7867 )
 
 [node name="SinglePlayerSprite_1" parent="CanvasLayer/HBoxContainer" instance=ExtResource( 2 )]
 visible = false
-position = Vector2( 215.82, 73.5391 )
+position = Vector2( -35.1027, -22.7867 )
 side = 1
 
 [node name="SinglePlayerSprite_2" parent="CanvasLayer/HBoxContainer" instance=ExtResource( 2 )]
 visible = false
-position = Vector2( 337.046, 73.5391 )
+position = Vector2( 86.1233, -22.7867 )
 side = 2
 
 [node name="SinglePlayerSprite_3" parent="CanvasLayer/HBoxContainer" instance=ExtResource( 2 )]
 visible = false
-position = Vector2( 447.048, 62.3145 )
+position = Vector2( 203.261, -25.6868 )
 side = 3
 
 [node name="Label" type="Label" parent="CanvasLayer"]
