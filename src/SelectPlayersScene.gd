@@ -16,7 +16,7 @@ func _process(delta):
 				#var c = self.get_child_count()
 				var human = find_node("SinglePlayerSprite_" + str(i))
 				human.visible = true
-#				$AudioStreamPlayer_PlayerJoined.play()
+				$AudioStreamPlayer_Joined.play()
 				pass
 			pass
 		pass

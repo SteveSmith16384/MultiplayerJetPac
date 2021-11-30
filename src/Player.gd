@@ -143,6 +143,7 @@ func _physics_process(_delta):
 func _on_FloorArea2D_body_entered(body):
 	if body.is_in_group("floors"):
 		is_on_floor = true
+		$AudioStreamPlayer_Landed.play()
 	pass
 
 
@@ -150,6 +151,7 @@ func _on_FloorArea2D_body_exited(body):
 	if body.is_in_group("floors"):
 		is_on_floor = false
 		main.show_explosion(self)
+		$AudioStreamPlayer_Jump.play()
 	pass
 
 

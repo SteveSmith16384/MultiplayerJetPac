@@ -6,15 +6,13 @@
 [ext_resource path="res://ShipConstruction.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World.gd" type="Script" id=5]
 [ext_resource path="res://LandingArea2D.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sfx/sfx_sounds_fanfare1.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/DefaultFont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://SinglePlayerSprite.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sfx/sfx_exp_cluster4.wav" type="AudioStream" id=10]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
-
-[node name="Enemy" parent="." instance=ExtResource( 7 )]
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
 
@@ -130,6 +128,10 @@ scale = Vector2( 4, 4 )
 
 [node name="AudioStreamPlayer_EnemyDestroyed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+
+[node name="AudioStreamPlayer_Started" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
 
 [connection signal="body_entered" from="Ships/DropzoneArea_0" to="." method="_on_DropzoneArea_0_body_entered"]
 [connection signal="area_entered" from="Ships/LandingArea_0" to="." method="_on_LandingArea_0_area_entered"]

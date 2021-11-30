@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://SelectPlayersScene.gd" type="Script" id=1]
 [ext_resource path="res://SinglePlayerSprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/DefaultFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/music/Battle.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/sfx/sfx_sounds_interaction1.wav" type="AudioStream" id=5]
 
 [node name="SelectPlayersScene" type="Node2D"]
 script = ExtResource( 1 )
@@ -56,5 +57,8 @@ autoplay = true
 [node name="Timer_Flash" type="Timer" parent="."]
 wait_time = 0.3
 autostart = true
+
+[node name="AudioStreamPlayer_Joined" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="timeout" from="Timer_Flash" to="." method="_on_Timer_Flash_timeout"]
