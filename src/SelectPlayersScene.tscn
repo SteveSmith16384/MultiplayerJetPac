@@ -43,7 +43,7 @@ margin_top = 73.3359
 margin_right = 492.456
 margin_bottom = 144.336
 custom_fonts/font = ExtResource( 3 )
-text = "PRESS FIRE TO JOIN, ENTER TO START
+text = "PRESS FIRE TO JOIN, ENTER TO START!
 "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -52,3 +52,9 @@ __meta__ = {
 [node name="AudioStreamPlayer_Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
+
+[node name="Timer_Flash" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer_Flash" to="." method="_on_Timer_Flash_timeout"]

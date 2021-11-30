@@ -35,6 +35,12 @@ func set_player_start_pos(player):
 	pass
 	
 	
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene("res://SelectPlayersScene.tscn")
+	pass
+
+
 func spawn_item(side, level):
 	if game_over:
 		return
