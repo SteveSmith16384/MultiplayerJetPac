@@ -166,7 +166,7 @@ func show_winner(side):
 		
 	game_over = true
 	var label = self.find_node("WinnerLabel")
-	label.text = "PLAYER " + str(side) + " IS THE WINNER!"
+	label.text = "PLAYER " + str(side+1) + " IS THE WINNER!"
 	
 	var sprite = find_node("WinnerSprite")
 	sprite.side = side
