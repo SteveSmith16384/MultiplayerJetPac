@@ -6,6 +6,8 @@ Programmed by Stephen Smith (stephen.carlylesmith@googlemail.com).  Twitter: @st
 
 Gameplay Video: https://www.youtube.com/watch?v=PHql_wgp2LI
 
+If you have any comments or suggestions for this game, don't hesitate to get in contact!
+
 
 ## Instructions
 * Up to 4 players compete to be the first to assemble and fuel their spaceship.
@@ -30,6 +32,7 @@ Since the app is not signed for a Mac (I don't even have a Mac), it shows "Appli
 
 ## Credits
 * Original game design and graphics by Ultimate Play-the-Game
+* Developed using Godot
 * All sound effects taken from https://opengameart.org/content/512-sound-effects-8-bit-style
 * Intro music taken from https://opengameart.org/content/frozen-jam-seamless-loop
 * Player select music from https://opengameart.org/content/5-chiptunes-action
