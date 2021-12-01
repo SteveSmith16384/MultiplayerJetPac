@@ -9,3 +9,10 @@ func _process(delta):
 			get_tree().change_scene("res://SelectPlayersScene.tscn")
 		pass
 		
+	$Rotated.rotate(delta)
+	pass
+
+func _on_Timer_Flash_timeout():
+	var label = find_node("Label")
+	label.visible = not label.visible
+	pass

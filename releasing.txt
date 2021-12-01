@@ -1,0 +1,5 @@
+Full screen!
+Start with IntroScene
+Check all debugging is turned off
+Inc version num
+Copy in new readme
