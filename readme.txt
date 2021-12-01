@@ -32,7 +32,7 @@ Since the app is not signed for a Mac (I don't even have a Mac), it shows "Appli
 * Original game design and graphics by Ultimate Play-the-Game
 * All sound effects taken from https://opengameart.org/content/512-sound-effects-8-bit-style
 * Intro music taken from https://opengameart.org/content/frozen-jam-seamless-loop
-* Player select music https://opengameart.org/content/glitchy-battle
+* Player select music from https://opengameart.org/content/5-chiptunes-action
 
 
 

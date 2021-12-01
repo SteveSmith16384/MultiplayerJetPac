@@ -13,6 +13,18 @@ script = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Label_Version" type="Label" parent="CanvasLayer"]
+margin_left = 425.615
+margin_top = 3.14273
+margin_right = 877.615
+margin_bottom = 19.1427
+custom_fonts/font = ExtResource( 5 )
+text = "Version 0.1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,9 +67,21 @@ __meta__ = {
 stream = ExtResource( 3 )
 autoplay = true
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Logo" type="Sprite" parent="."]
 position = Vector2( 259.956, 72.6679 )
 texture = ExtResource( 4 )
+
+[node name="Label2" type="Label" parent="Logo"]
+margin_left = -208.287
+margin_top = -66.1699
+margin_right = 205.713
+margin_bottom = 4.83006
+custom_fonts/font = ExtResource( 1 )
+text = "MULTIPLAYER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Timer_Flash" type="Timer" parent="."]
 wait_time = 0.5
