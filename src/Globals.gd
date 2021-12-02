@@ -12,6 +12,7 @@ var MUSIC_ON = true
 
 var player_nums = []
 var rnd : RandomNumberGenerator
+var enemy_type : int
 
 func _ready():
 	rnd = RandomNumberGenerator.new()

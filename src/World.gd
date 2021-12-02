@@ -27,6 +27,9 @@ func _ready():
 			var dropzone = get_node("Ships/DropzoneArea_" + str(side))
 			ship.position.x = dropzone.position.x - diff.x
 			ship.position.y = dropzone.position.y - diff.y
+			
+	Globals.enemy_type = Globals.rnd.randi_range(0, 1)
+
 	pass
 
 

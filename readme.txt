@@ -36,6 +36,6 @@ Since the app is not signed for a Mac (I don't even have a Mac), it shows "Appli
 * All sound effects taken from https://opengameart.org/content/512-sound-effects-8-bit-style
 * Intro music taken from https://opengameart.org/content/frozen-jam-seamless-loop
 * Player select music from https://opengameart.org/content/5-chiptunes-action
-* Thanks to MichelleKG for help on running the game on Macs.
+* Thanks to Mikhail Sudakov for help on running the game on Macs.
 
 

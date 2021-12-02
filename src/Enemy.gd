@@ -16,8 +16,7 @@ func _ready():
 	$Fireball.visible = false
 	$Fuzzy.visible = false
 		
-	var t = Globals.rnd.randi_range(0, 1)
-	if t == 0:
+	if Globals.enemy_type == 0:
 		type = Type.Fireball
 		$Fireball.visible = true
 		x_dir = 1
@@ -26,7 +25,7 @@ func _ready():
 			$Rocket.flip_h = true
 			$Fireball.flip_h = true
 		y_dir = Globals.rnd.randf_range(-.5, .5)
-	elif t == 1:
+	elif Globals.enemy_type == 1:
 		type = Type.Fuzzy
 		$Fuzzy.visible = true
 		change_fuzzy_dir()
