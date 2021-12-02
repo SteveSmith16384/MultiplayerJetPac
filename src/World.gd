@@ -45,7 +45,10 @@ func _process(delta):
 		
 	if game_over:
 		var ship = self.find_node("ShipConstruction_" + str(winner))
-		ship.position.y -= delta * 60
+		ship.position.y -= delta * 40
+		if ship.position.y < -200:
+			get_tree().change_scene("res://SelectPlayersScene.tscn")
+
 	pass
 
 
@@ -179,6 +182,9 @@ func show_winner(side):
 	
 	var sprite = find_node("WinnerSprite")
 	sprite.set_side(side)
+	
+	var anim = find_node("AnimationPlayer_WinnerSprite")
+	anim.play("Pulsate")
 
 	var node = find_node("WinnerNode")
 	node.visible = true

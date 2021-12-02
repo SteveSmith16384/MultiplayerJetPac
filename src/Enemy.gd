@@ -65,7 +65,9 @@ func _on_Area2D_body_entered(body):
 		return
 		
 	if type == Type.Fuzzy:
-		change_fuzzy_dir()
+		#change_fuzzy_dir()
+		#x_dir = x_dir * -1
+		y_dir = y_dir * -1
 	else:
 		main.show_explosion(self)
 		main.enemy_destroyed()
