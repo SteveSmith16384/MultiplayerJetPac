@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/jetpac_ship.png" type="Texture" id=1]
 [ext_resource path="res://assets/jetpac_ship_magenta.png" type="Texture" id=2]
 [ext_resource path="res://ShipConstruction.gd" type="Script" id=3]
 [ext_resource path="res://SetColourFromSide.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/jet1.png" type="Texture" id=5]
+[ext_resource path="res://assets/jet2.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
 
 [node name="ShipConstruction" type="Node2D"]
 script = ExtResource( 3 )
@@ -33,3 +43,10 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 16, 0 )
 
 [node name="AudioStreamPlayer_Loaded" type="AudioStreamPlayer" parent="."]
+
+[node name="Jets" type="AnimatedSprite" parent="."]
+position = Vector2( 16.252, 111.982 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+frame = 1
+playing = true

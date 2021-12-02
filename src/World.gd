@@ -179,6 +179,9 @@ func show_winner(side):
 
 	var node = find_node("WinnerNode")
 	node.visible = true
+	
+	var spaceship = self.get_node("Ships/ShipConstruction_" + str(side))
+	spaceship.show_jets();
 	pass
 	
 

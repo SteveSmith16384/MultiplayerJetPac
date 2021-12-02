@@ -54,3 +54,8 @@ func show_fuel(pcent):
 	pass
 	
 	
+func show_jets():
+	$Jets.visible = true
+	$Jets.modulate = Color(1.0, 0.0, 0.0, 1.0);
+	pass
+	
