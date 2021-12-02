@@ -10,7 +10,7 @@ var game_over = false
 var winner : int
 
 func _ready():
-	for side in range(0, 4):# todo - re-add Globals.player_nums: # 
+	for side in Globals.player_nums: # range(0, 4):# todo - re-add 
 		var player = player_class.instance()
 		player.side = side
 		set_player_start_pos(player)
@@ -65,7 +65,7 @@ func spawn_item(side, level):
 	item.get_node("ItemSprites").show_item(item.type)
 	item.position = Vector2(Globals.rnd.randi_range(50, 450), -10)
 	item.side = side
-	add_child(item)
+	call_deferred("add_child", item)
 	pass
 	
 	
@@ -178,7 +178,7 @@ func show_winner(side):
 	label.text = "PLAYER " + str(side+1) + " IS THE WINNER!"
 	
 	var sprite = find_node("WinnerSprite")
-	sprite.side = side
+	sprite.set_side(side)
 
 	var node = find_node("WinnerNode")
 	node.visible = true

@@ -1,9 +1,9 @@
 extends Node
 
 const VERSION = "1.0"
-const RELEASE_MODE = true
+const RELEASE_MODE = false
 
-const NO_ENEMIES = true and !RELEASE_MODE
+const NO_ENEMIES = false and !RELEASE_MODE
 
 enum ObjectType {Fuel, Ship1, Ship2, Ship3}
 
