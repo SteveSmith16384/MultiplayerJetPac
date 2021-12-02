@@ -30,7 +30,6 @@ Globals="*res://Globals.gd"
 window/size/width=512
 window/size/height=384
 window/size/resizable=false
-window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
@@ -126,6 +125,7 @@ start_game={
 
 [rendering]
 
+quality/filters/use_nearest_mipmap_filter=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
 quality/2d/gles2_use_nvidia_rect_flicker_workaround=true

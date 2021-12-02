@@ -66,7 +66,8 @@ func _physics_process(_delta):
 		elif x_input > 0:
 			animationPlayer.play("Run_Right")
 		else:
-			#animationPlayer.play("Stand")
+#			print("Playing standd")
+			animationPlayer.stop(false)
 			pass
 	else:
 		walking_left_sprite.visible = false
@@ -101,17 +102,8 @@ func _physics_process(_delta):
 			
 	motion.y = clamp(motion.y, -MAX_SPEED_Y, MAX_SPEED_Y)
 
-#	walking_sprite.flip_h = motion.x > 0
-#	flying_sprite.flip_h = motion.x > 0
-	
 	motion = move_and_slide(motion, Vector2.UP)
 	
-	# Wrap
-#	if self.position.x < 0:
-#		self.position.x = 512
-#	elif self.position.x > 512:
-#		self.position.x = 0
-		
 	if self.position.y < 20:
 		self.position.y = 20
 		motion.y = motion.y * -0.7

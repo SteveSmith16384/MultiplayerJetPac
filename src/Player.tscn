@@ -125,7 +125,6 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 offset = Vector2( -4, 0 )
 hframes = 4
-frame = 3
 
 [node name="SetColourFromSide" parent="WalkingLeftSprites" instance=ExtResource( 6 )]
 
