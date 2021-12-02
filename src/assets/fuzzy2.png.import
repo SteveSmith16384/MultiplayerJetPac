@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ship1_1.png-9a6e3683c574493141213e6022becd3c.stex"
+path="res://.import/fuzzy2.png-40e0543796ff87c6846741c6ef3239bc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ship1_1.png"
-dest_files=[ "res://.import/ship1_1.png-9a6e3683c574493141213e6022becd3c.stex" ]
+source_file="res://assets/fuzzy2.png"
+dest_files=[ "res://.import/fuzzy2.png-40e0543796ff87c6846741c6ef3239bc.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

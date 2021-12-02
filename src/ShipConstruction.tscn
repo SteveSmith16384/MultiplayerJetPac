@@ -48,5 +48,4 @@ region_rect = Rect2( 0, 0, 16, 0 )
 position = Vector2( 16.252, 111.982 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 1
 playing = true

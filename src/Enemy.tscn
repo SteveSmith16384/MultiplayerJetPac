@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/rocket.png" type="Texture" id=1]
 [ext_resource path="res://Enemy.gd" type="Script" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://assets/fireball1.png" type="Texture" id=4]
 [ext_resource path="res://assets/fireball2.png" type="Texture" id=5]
 [ext_resource path="res://AlternateColours.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/fuzzy1.png" type="Texture" id=7]
+[ext_resource path="res://assets/fuzzy2.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.125, 4.5625 )
+extents = Vector2( 3.5, 2.53125 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -18,7 +20,16 @@ animations = [ {
 "speed": 15.0
 } ]
 
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
 [node name="Enemy" type="Node2D"]
+scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
 [node name="Rocket" type="Sprite" parent="."]
@@ -31,15 +42,24 @@ position = Vector2( -1.25, 1.25 )
 scale = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.28125, -0.3125 )
 shape = SubResource( 1 )
 
 [node name="LoopAround" parent="." instance=ExtResource( 3 )]
 
 [node name="Fireball" type="AnimatedSprite" parent="."]
-scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="AlternateColours" parent="Fireball" instance=ExtResource( 6 )]
+
+[node name="Fuzzy" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+frame = 1
+playing = true
+
+[node name="AlternateColours2" parent="Fuzzy" instance=ExtResource( 6 )]
+scale = Vector2( 2, 2 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
