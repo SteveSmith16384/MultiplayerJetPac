@@ -66,7 +66,6 @@ func _physics_process(_delta):
 		elif x_input > 0:
 			animationPlayer.play("Run_Right")
 		else:
-#			print("Playing standd")
 			animationPlayer.stop(false)
 			pass
 	else:

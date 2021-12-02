@@ -7,9 +7,10 @@ const enemy_class = preload("res://Enemy.tscn")
 const expl_class = preload("res://Explosion.tscn")
 
 var game_over = false
+var winner : int
 
 func _ready():
-	for side in Globals.player_nums: # range(0, 2):# todo - re-add 
+	for side in range(0, 4):# todo - re-add Globals.player_nums: # 
 		var player = player_class.instance()
 		player.side = side
 		set_player_start_pos(player)
@@ -38,6 +39,10 @@ func set_player_start_pos(player):
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene("res://SelectPlayersScene.tscn")
+		
+	if game_over:
+		var ship = self.find_node("ShipConstruction_" + str(winner))
+		ship.position.y -= delta * 60
 	pass
 
 
@@ -165,6 +170,7 @@ func show_winner(side):
 		return
 		
 	game_over = true
+	winner = side
 	var label = self.find_node("WinnerLabel")
 	label.text = "PLAYER " + str(side+1) + " IS THE WINNER!"
 	
