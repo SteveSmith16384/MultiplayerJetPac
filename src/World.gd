@@ -10,21 +10,29 @@ var game_over = false
 var winner : int
 
 func _ready():
-	for side in Globals.player_nums: # range(0, 4):# todo - re-add 
+	for side in range(0, 4):
+		var score = find_node("Score_" + str(side))
+		score.visible = false
+		pass
+		
+	for side in Globals.player_nums: # range(0, 1):# todo - re-add 
 		var player = player_class.instance()
 		player.side = side
 		set_player_start_pos(player)
 		add_child(player)
 		spawn_item(side, 0)
 		
+		var score = find_node("Score_" + str(side))
+		#score.visible = true
+
 		if side > 0:
 			# Position ship relative to dropzone
-			var ship0 = $Ships/ShipConstruction_0
-			var dropzone0 = $Ships/DropzoneArea_0
+			var ship0 = find_node("ShipConstruction_0")
+			var dropzone0 = find_node("DropzoneArea_0")
 			var diff : Vector2 = dropzone0.position - ship0.position
 
-			var ship = get_node("Ships/ShipConstruction_" + str(side))
-			var dropzone = get_node("Ships/DropzoneArea_" + str(side))
+			var ship = find_node("ShipConstruction_" + str(side))
+			var dropzone = find_node("DropzoneArea_" + str(side))
 			ship.position.x = dropzone.position.x - diff.x
 			ship.position.y = dropzone.position.y - diff.y
 			

@@ -27,6 +27,8 @@ var side : int
 var is_on_floor = false
 var carrying #: Globals.ObjectType
 var bullet_count : int = 0
+var score : int = 0
+
 
 func _ready():
 	$AudioStreamPlayer_Shoot.stream = load("res://assets/sfx/sfx_deathscream_robot" + str(side+1) + ".wav")
@@ -202,4 +204,11 @@ func _on_RespawnTimer_timeout():
 func play_pickup():
 	$AudioStreamPlayer_Pickup.play()
 	pass
+	
+
+func inc_score(amt):
+	score += amt
+	main.update_scores()
+	pass
+	
 	
