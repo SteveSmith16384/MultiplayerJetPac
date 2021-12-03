@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/DefaultFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/jetpac_logo.png" type="Texture" id=2]
+
+[node name="Logo" type="Sprite"]
+position = Vector2( 259.956, 72.6679 )
+texture = ExtResource( 2 )
+
+[node name="Label2" type="Label" parent="."]
+margin_left = -208.287
+margin_top = -66.1699
+margin_right = 205.713
+margin_bottom = 4.83006
+custom_fonts/font = ExtResource( 1 )
+text = "MULTIPLAYER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/DefaultFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://IntroScene.gd" type="Script" id=2]
 [ext_resource path="res://assets/music/tgfcoder-FrozenJam-SeamlessLoop.ogg" type="AudioStream" id=3]
-[ext_resource path="res://assets/jetpac_logo.png" type="Texture" id=4]
+[ext_resource path="res://Logo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/DefaultFont_Small.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/jetpac_ship.png" type="Texture" id=6]
 [ext_resource path="res://SinglePlayerSprite.tscn" type="PackedScene" id=7]
@@ -67,21 +67,7 @@ __meta__ = {
 stream = ExtResource( 3 )
 autoplay = true
 
-[node name="Logo" type="Sprite" parent="."]
-position = Vector2( 259.956, 72.6679 )
-texture = ExtResource( 4 )
-
-[node name="Label2" type="Label" parent="Logo"]
-margin_left = -208.287
-margin_top = -66.1699
-margin_right = 205.713
-margin_bottom = 4.83006
-custom_fonts/font = ExtResource( 1 )
-text = "MULTIPLAYER"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Logo" parent="." instance=ExtResource( 4 )]
 
 [node name="Timer_Flash" type="Timer" parent="."]
 wait_time = 0.5

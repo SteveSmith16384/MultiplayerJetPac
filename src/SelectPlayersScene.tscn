@@ -1,21 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://SelectPlayersScene.gd" type="Script" id=1]
 [ext_resource path="res://SinglePlayerSprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/DefaultFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/music/Juhani Junkala [Retro Game Music Pack] Level 3.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/sfx/sfx_sounds_interaction1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Logo.tscn" type="PackedScene" id=6]
 
 [node name="SelectPlayersScene" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="Logo" parent="." instance=ExtResource( 6 )]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-margin_left = 237.962
-margin_top = 208.778
-margin_right = 277.962
-margin_bottom = 248.778
+margin_left = 235.584
+margin_top = 275.374
+margin_right = 275.584
+margin_bottom = 315.374
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -40,10 +43,10 @@ position = Vector2( 203.261, -25.6868 )
 side = 3
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-margin_left = 25.456
-margin_top = 73.3359
-margin_right = 492.456
-margin_bottom = 144.336
+margin_left = 17.1315
+margin_top = 131.607
+margin_right = 497.132
+margin_bottom = 202.607
 custom_fonts/font = ExtResource( 3 )
 text = "PRESS FIRE TO JOIN, ENTER TO START!
 "
