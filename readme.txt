@@ -17,7 +17,7 @@ If you have any comments or suggestions for this game, don't hesitate to get in 
 
 
 ## Controls
-* Keyboard: W, A, S, D and Space.
+* Keyboard: Either "W, A, D and Space", or "Q, O, P and Space"
 * Should work with most controllers
 * Esc - quit
 
