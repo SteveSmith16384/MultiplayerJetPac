@@ -11,7 +11,7 @@ shader_param/bottomStaticOpt = 0.0
 shader_param/bottomStaticStrenth = 0.7
 shader_param/scalinesOpt = 0.8
 shader_param/rgbOffsetOpt = 0.2
-shader_param/horzFuzzOpt = 0.15
+shader_param/horzFuzzOpt = 0.1
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 2 )
