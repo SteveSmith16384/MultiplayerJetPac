@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/DefaultFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://IntroScene.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/DefaultFont_Small.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/jetpac_ship.png" type="Texture" id=6]
 [ext_resource path="res://SinglePlayerSprite.tscn" type="PackedScene" id=7]
+[ext_resource path="res://TVShader.tscn" type="PackedScene" id=8]
 
 [node name="IntroScene" type="Node2D"]
 script = ExtResource( 2 )
@@ -62,6 +63,8 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TVShader" parent="CanvasLayer" instance=ExtResource( 8 )]
 
 [node name="AudioStreamPlayer_Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

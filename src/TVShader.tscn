@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/shaders/TV.shader" type="Shader" id=1]
+[ext_resource path="res://Assets/Screen Shaders/Aditional Shaders/Sharpness.shader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/vertJerkOpt = 0.0
+shader_param/vertMovementOpt = 0.0
+shader_param/bottomStaticOpt = 0.0
+shader_param/bottomStaticStrenth = 0.7
+shader_param/scalinesOpt = 0.8
+shader_param/rgbOffsetOpt = 0.2
+shader_param/horzFuzzOpt = 0.15
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+
+[node name="TVShader" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+position = Vector2( 167.289, 197.803 )
+scale = Vector2( 1.82906, 2.08727 )
+copy_mode = 2
+rect = Rect2( -100, -100, 300, 200 )
+
+[node name="Shader" type="ColorRect" parent="BackBufferCopy"]
+material = SubResource( 1 )
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="."]
+visible = false
+position = Vector2( 511.376, 368.832 )
+scale = Vector2( 5.04468, 3.76179 )
+
+[node name="ColorRect" type="ColorRect" parent="BackBufferCopy2"]
+material = SubResource( 2 )
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

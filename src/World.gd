@@ -102,7 +102,7 @@ func area_entered_landing_area(landing_side, area):
 		
 	area.owner.queue_free()
 
-	var spaceship = self.get_node("Ships/ShipConstruction_" + str(landing_side))
+	var spaceship = self.find_node("ShipConstruction_" + str(landing_side))
 	spaceship.update_spaceship()
 	if spaceship.level < 9:
 		self.spawn_item(landing_side, spaceship.level)
@@ -113,22 +113,22 @@ func area_entered_landing_area(landing_side, area):
 
 
 func _on_DropzoneArea_0_body_entered(body):
-	body_entered_dropzone_area($Ships/DropzoneArea_0, body)
+	body_entered_dropzone_area(find_node("DropzoneArea_0"), body)
 	pass
 
 
 func _on_DropzoneArea_1_body_entered(body):
-	body_entered_dropzone_area($Ships/DropzoneArea_1, body)
+	body_entered_dropzone_area(find_node("DropzoneArea_1"), body)
 	pass
 
 
 func _on_DropzoneArea_2_body_entered(body):
-	body_entered_dropzone_area($Ships/DropzoneArea_2, body)
+	body_entered_dropzone_area(find_node("DropzoneArea_2"), body)
 	pass
 
 
 func _on_DropzoneArea_3_body_entered(body):
-	body_entered_dropzone_area($Ships/DropzoneArea_3, body)
+	body_entered_dropzone_area(find_node("DropzoneArea_3"), body)
 	pass
 	
 
@@ -189,7 +189,7 @@ func show_winner(side):
 	var node = find_node("WinnerNode")
 	node.visible = true
 	
-	var spaceship = self.get_node("Ships/ShipConstruction_" + str(side))
+	var spaceship = self.find_node("ShipConstruction_" + str(side))
 	spaceship.show_jets();
 	pass
 	

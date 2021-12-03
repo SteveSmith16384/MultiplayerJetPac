@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://DropzoneArea2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Floor.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/DefaultFont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://SinglePlayerSprite.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sfx/sfx_exp_cluster4.wav" type="AudioStream" id=10]
+[ext_resource path="res://TVShader.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Pulsate"
@@ -39,17 +40,6 @@ tracks/1/keys = {
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="Floor" parent="." instance=ExtResource( 2 )]
-
-[node name="Platform1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 84.757, 151.503 )
-
-[node name="Platform2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 257.449, 227.785 )
-
-[node name="Platform3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 428.023, 83.6976 )
-
 [node name="StartPositions" type="Node" parent="."]
 
 [node name="StartPosition_0" type="Position2D" parent="StartPositions"]
@@ -63,53 +53,6 @@ position = Vector2( 220.315, 322.904 )
 
 [node name="StartPosition_3" type="Position2D" parent="StartPositions"]
 position = Vector2( 316.177, 322.904 )
-
-[node name="Ships" type="Node" parent="."]
-
-[node name="ShipConstruction_0" parent="Ships" instance=ExtResource( 4 )]
-position = Vector2( 304, 286 )
-
-[node name="DropzoneArea_0" parent="Ships" instance=ExtResource( 1 )]
-position = Vector2( 319.819, 178 )
-
-[node name="LandingArea_0" parent="Ships" instance=ExtResource( 6 )]
-position = Vector2( -20.1815, 0 )
-
-[node name="ShipConstruction_1" parent="Ships" instance=ExtResource( 4 )]
-position = Vector2( 361.899, 310.848 )
-side = 1
-
-[node name="DropzoneArea_1" parent="Ships" instance=ExtResource( 1 )]
-position = Vector2( 361.863, 178 )
-side = 1
-
-[node name="LandingArea_1" parent="Ships" instance=ExtResource( 6 )]
-position = Vector2( 21.8633, 0 )
-side = 1
-
-[node name="ShipConstruction_2" parent="Ships" instance=ExtResource( 4 )]
-position = Vector2( 148.743, 321.44 )
-side = 2
-
-[node name="DropzoneArea_2" parent="Ships" instance=ExtResource( 1 )]
-position = Vector2( 148.276, 178 )
-side = 2
-
-[node name="LandingArea_2" parent="Ships" instance=ExtResource( 6 )]
-position = Vector2( -191.724, 0 )
-side = 2
-
-[node name="ShipConstruction_3" parent="Ships" instance=ExtResource( 4 )]
-position = Vector2( 191.539, 320.27 )
-side = 3
-
-[node name="DropzoneArea_3" parent="Ships" instance=ExtResource( 1 )]
-position = Vector2( 191.93, 178 )
-side = 3
-
-[node name="LandingArea_3" parent="Ships" instance=ExtResource( 6 )]
-position = Vector2( -148.07, 0 )
-side = 3
 
 [node name="SpawnEnemyTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -154,6 +97,66 @@ scale = Vector2( 4, 4 )
 [node name="AnimationPlayer_WinnerSprite" type="AnimationPlayer" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer/VBoxContainer/WinnerSprite"]
 anims/Pulsate = SubResource( 1 )
 
+[node name="Floor" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="Platform1" parent="CanvasLayer" instance=ExtResource( 3 )]
+position = Vector2( 84.757, 151.503 )
+
+[node name="Platform2" parent="CanvasLayer" instance=ExtResource( 3 )]
+position = Vector2( 257.449, 227.785 )
+
+[node name="Platform3" parent="CanvasLayer" instance=ExtResource( 3 )]
+position = Vector2( 428.023, 83.6976 )
+
+[node name="Ships" type="Node" parent="CanvasLayer"]
+
+[node name="ShipConstruction_0" parent="CanvasLayer/Ships" instance=ExtResource( 4 )]
+position = Vector2( 304, 286 )
+
+[node name="DropzoneArea_0" parent="CanvasLayer/Ships" instance=ExtResource( 1 )]
+position = Vector2( 319.819, 178 )
+
+[node name="LandingArea_0" parent="CanvasLayer/Ships" instance=ExtResource( 6 )]
+position = Vector2( -20.1815, 0 )
+
+[node name="ShipConstruction_1" parent="CanvasLayer/Ships" instance=ExtResource( 4 )]
+position = Vector2( 361.899, 310.848 )
+side = 1
+
+[node name="DropzoneArea_1" parent="CanvasLayer/Ships" instance=ExtResource( 1 )]
+position = Vector2( 361.863, 178 )
+side = 1
+
+[node name="LandingArea_1" parent="CanvasLayer/Ships" instance=ExtResource( 6 )]
+position = Vector2( 21.8633, 0 )
+side = 1
+
+[node name="ShipConstruction_2" parent="CanvasLayer/Ships" instance=ExtResource( 4 )]
+position = Vector2( 148.743, 321.44 )
+side = 2
+
+[node name="DropzoneArea_2" parent="CanvasLayer/Ships" instance=ExtResource( 1 )]
+position = Vector2( 148.276, 178 )
+side = 2
+
+[node name="LandingArea_2" parent="CanvasLayer/Ships" instance=ExtResource( 6 )]
+position = Vector2( -191.724, 0 )
+side = 2
+
+[node name="ShipConstruction_3" parent="CanvasLayer/Ships" instance=ExtResource( 4 )]
+position = Vector2( 191.539, 320.27 )
+side = 3
+
+[node name="DropzoneArea_3" parent="CanvasLayer/Ships" instance=ExtResource( 1 )]
+position = Vector2( 191.93, 178 )
+side = 3
+
+[node name="LandingArea_3" parent="CanvasLayer/Ships" instance=ExtResource( 6 )]
+position = Vector2( -148.07, 0 )
+side = 3
+
+[node name="TVShader" parent="CanvasLayer" instance=ExtResource( 11 )]
+
 [node name="AudioStreamPlayer_EnemyDestroyed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 
@@ -161,12 +164,12 @@ stream = ExtResource( 10 )
 stream = ExtResource( 7 )
 autoplay = true
 
-[connection signal="body_entered" from="Ships/DropzoneArea_0" to="." method="_on_DropzoneArea_0_body_entered"]
-[connection signal="area_entered" from="Ships/LandingArea_0" to="." method="_on_LandingArea_0_area_entered"]
-[connection signal="body_entered" from="Ships/DropzoneArea_1" to="." method="_on_DropzoneArea_1_body_entered"]
-[connection signal="area_entered" from="Ships/LandingArea_1" to="." method="_on_LandingArea_1_area_entered"]
-[connection signal="body_entered" from="Ships/DropzoneArea_2" to="." method="_on_DropzoneArea_2_body_entered"]
-[connection signal="area_entered" from="Ships/LandingArea_2" to="." method="_on_LandingArea_2_area_entered"]
-[connection signal="body_entered" from="Ships/DropzoneArea_3" to="." method="_on_DropzoneArea_3_body_entered"]
-[connection signal="area_entered" from="Ships/LandingArea_3" to="." method="_on_LandingArea_3_area_entered"]
 [connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_SpaenEnemyTimer_timeout"]
+[connection signal="body_entered" from="CanvasLayer/Ships/DropzoneArea_0" to="." method="_on_DropzoneArea_0_body_entered"]
+[connection signal="area_entered" from="CanvasLayer/Ships/LandingArea_0" to="." method="_on_LandingArea_0_area_entered"]
+[connection signal="body_entered" from="CanvasLayer/Ships/DropzoneArea_1" to="." method="_on_DropzoneArea_1_body_entered"]
+[connection signal="area_entered" from="CanvasLayer/Ships/LandingArea_1" to="." method="_on_LandingArea_1_area_entered"]
+[connection signal="body_entered" from="CanvasLayer/Ships/DropzoneArea_2" to="." method="_on_DropzoneArea_2_body_entered"]
+[connection signal="area_entered" from="CanvasLayer/Ships/LandingArea_2" to="." method="_on_LandingArea_2_area_entered"]
+[connection signal="body_entered" from="CanvasLayer/Ships/DropzoneArea_3" to="." method="_on_DropzoneArea_3_body_entered"]
+[connection signal="area_entered" from="CanvasLayer/Ships/LandingArea_3" to="." method="_on_LandingArea_3_area_entered"]
