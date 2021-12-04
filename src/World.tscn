@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://DropzoneArea2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Floor.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/sfx/sfx_exp_cluster4.wav" type="AudioStream" id=10]
 [ext_resource path="res://TVShader.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/DefaultFont_Small.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Boot.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Pulsate"
@@ -60,43 +61,6 @@ wait_time = 2.0
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="WinnerNode" type="Node2D" parent="CanvasLayer/CenterContainer"]
-visible = false
-position = Vector2( 118.432, 105.833 )
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/WinnerNode"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer"]
-margin_right = 301.0
-margin_bottom = 34.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="WinnerLabel" type="Label" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer/VBoxContainer"]
-margin_right = 301.0
-margin_bottom = 34.0
-custom_fonts/font = ExtResource( 8 )
-text = "PLAYER X IS THE WINNER"
-
-[node name="WinnerSprite" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer/VBoxContainer" instance=ExtResource( 9 )]
-scale = Vector2( 4, 4 )
-
-[node name="AnimationPlayer_WinnerSprite" type="AnimationPlayer" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer/VBoxContainer/WinnerSprite"]
-anims/Pulsate = SubResource( 1 )
 
 [node name="Floor" parent="CanvasLayer" instance=ExtResource( 2 )]
 
@@ -156,7 +120,56 @@ side = 3
 position = Vector2( -148.07, 0 )
 side = 3
 
-[node name="TVShader" parent="CanvasLayer" instance=ExtResource( 11 )]
+[node name="Boots" type="Node2D" parent="CanvasLayer"]
+
+[node name="Boot_0" parent="CanvasLayer/Boots" instance=ExtResource( 13 )]
+position = Vector2( 317.16, -7.1272 )
+
+[node name="Boot_1" parent="CanvasLayer/Boots" instance=ExtResource( 13 )]
+position = Vector2( 363.487, -7.1272 )
+
+[node name="Boot_2" parent="CanvasLayer/Boots" instance=ExtResource( 13 )]
+position = Vector2( 155.016, -7.1272 )
+
+[node name="Boot_3" parent="CanvasLayer/Boots" instance=ExtResource( 13 )]
+position = Vector2( 195.998, -7.1272 )
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinnerNode" type="Node2D" parent="CanvasLayer/CenterContainer"]
+visible = false
+position = Vector2( 118.432, 105.833 )
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/WinnerNode"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer"]
+margin_right = 301.0
+margin_bottom = 34.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinnerLabel" type="Label" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer/VBoxContainer"]
+margin_right = 301.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 8 )
+text = "PLAYER X IS THE WINNER"
+
+[node name="WinnerSprite" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer/VBoxContainer" instance=ExtResource( 9 )]
+scale = Vector2( 4, 4 )
+
+[node name="AnimationPlayer_WinnerSprite" type="AnimationPlayer" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer/VBoxContainer/WinnerSprite"]
+anims/Pulsate = SubResource( 1 )
 
 [node name="Scores" type="Node2D" parent="CanvasLayer"]
 
@@ -204,6 +217,8 @@ margin_bottom = 16.0
 custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0, 1, 0.960784, 1 )
 text = "SCORE:0"
+
+[node name="TVShader" parent="CanvasLayer" instance=ExtResource( 11 )]
 
 [node name="AudioStreamPlayer_EnemyDestroyed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )

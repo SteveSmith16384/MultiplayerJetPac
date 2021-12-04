@@ -17,7 +17,7 @@ func _ready():
 		score.visible = false
 		pass
 		
-	for side in Globals.player_nums: # range(0, 1):# todo - re-add 
+	for side in range(0, 4):# todo - re-add Globals.player_nums: # 
 		var player = player_class.instance()
 		player.side = side
 		set_player_start_pos(player)
@@ -25,7 +25,7 @@ func _ready():
 		spawn_item(side, 0)
 		
 		var score = find_node("Score_" + str(side))
-		#score.visible = true
+		score.visible = true
 
 		if side > 0:
 			# Position ship relative to dropzone
@@ -37,9 +37,9 @@ func _ready():
 			var dropzone = find_node("DropzoneArea_" + str(side))
 			ship.position.x = dropzone.position.x - diff.x
 			ship.position.y = dropzone.position.y - diff.y
+			ship.update_spaceship()
 			
 	Globals.enemy_type = Globals.rnd.randi_range(0, 1)
-
 	pass
 
 
@@ -57,7 +57,7 @@ func _process(delta):
 		var ship = self.find_node("ShipConstruction_" + str(winner))
 		ship.position.y -= delta * 40
 		if ship.position.y < -200:
-			get_tree().change_scene("res://SelectPlayersScene.tscn")
+			get_tree().change_scene("res://World.tscn")
 
 	pass
 
@@ -201,6 +201,11 @@ func show_winner(side):
 	
 	var spaceship = self.find_node("ShipConstruction_" + str(side))
 	spaceship.show_jets();
+	
+	for s in range(0, 4):# todo - re-add Globals.player_nums: # 
+		if s != winner:
+			var boot = self.find_node("Boot_" + str(s))
+			boot.started = true
 	pass
 	
 
@@ -216,7 +221,17 @@ func _on_Timer_SpawnCollectable_timeout():
 	pass
 
 
-func update_scores():
-	#todo
+func update_score(side, score):
+	var node = find_node("Score_" + str(side))
+	node.text = "SCORE:" + str(score)
+	pass
+	
+
+func hide_ships():
+	for side in range(0, 4):# todo - re-add Globals.player_nums: # 
+		var spaceship = self.find_node("ShipConstruction_" + str(side))
+		if spaceship:
+			spaceship.visible = false
+			
 	pass
 	

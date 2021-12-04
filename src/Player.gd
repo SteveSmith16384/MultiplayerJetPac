@@ -208,7 +208,7 @@ func play_pickup():
 
 func inc_score(amt):
 	score += amt
-	main.update_scores()
+	main.update_score(side, score)
 	pass
 	
 	

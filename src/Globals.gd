@@ -1,7 +1,7 @@
 extends Node
 
 const VERSION = "1.2"
-const RELEASE_MODE = true
+const RELEASE_MODE = false
 
 const NO_ENEMIES = false and !RELEASE_MODE
 
