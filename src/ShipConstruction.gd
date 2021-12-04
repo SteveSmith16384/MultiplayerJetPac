@@ -13,7 +13,7 @@ func _ready():
 	pass
 	
 	
-func update_spaceship():
+func inc_spaceship_level():
 	level += 1
 	$AudioStreamPlayer_Loaded.play()
 	if level <= 3:

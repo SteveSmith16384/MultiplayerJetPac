@@ -123,7 +123,7 @@ side = 3
 [node name="Boots" type="Node2D" parent="CanvasLayer"]
 
 [node name="Boot_0" parent="CanvasLayer/Boots" instance=ExtResource( 13 )]
-position = Vector2( 317.16, -7.1272 )
+position = Vector2( 311.815, -8.90898 )
 
 [node name="Boot_1" parent="CanvasLayer/Boots" instance=ExtResource( 13 )]
 position = Vector2( 363.487, -7.1272 )

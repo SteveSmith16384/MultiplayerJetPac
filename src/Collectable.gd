@@ -9,6 +9,6 @@ func _physics_process(_delta):
 
 func _on_Area2D_Collect_body_entered(body):
 	if body.is_in_group("players"):
-		body.inc_score(10)
+		body.inc_score(100)
 		self.queue_free()
 	pass

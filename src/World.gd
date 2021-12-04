@@ -17,7 +17,7 @@ func _ready():
 		score.visible = false
 		pass
 		
-	for side in range(0, 4):# todo - re-add Globals.player_nums: # 
+	for side in Globals.player_nums: # range(0, 4):# todo - re-add 
 		var player = player_class.instance()
 		player.side = side
 		set_player_start_pos(player)
@@ -37,7 +37,6 @@ func _ready():
 			var dropzone = find_node("DropzoneArea_" + str(side))
 			ship.position.x = dropzone.position.x - diff.x
 			ship.position.y = dropzone.position.y - diff.y
-			ship.update_spaceship()
 			
 	Globals.enemy_type = Globals.rnd.randi_range(0, 1)
 	pass
@@ -103,7 +102,6 @@ func _on_LandingArea_3_area_entered(area):
 
 
 func area_entered_landing_area(landing_side, area):
-	#var parent = area.owner
 	if area.owner.is_in_group("dropped_items") == false:
 		return
 		
@@ -113,7 +111,7 @@ func area_entered_landing_area(landing_side, area):
 	area.owner.queue_free()
 
 	var spaceship = self.find_node("ShipConstruction_" + str(landing_side))
-	spaceship.update_spaceship()
+	spaceship.inc_spaceship_level()
 	if spaceship.level < 9:
 		self.spawn_item(landing_side, spaceship.level)
 	else:
@@ -148,12 +146,11 @@ func body_entered_dropzone_area(dropzone, body):
 		
 	if body.is_carrying_item():
 		if body.side == dropzone.side:
+			body.inc_score(10)
 			var dropped_item = dropped_item_class.instance()
 			dropped_item.position.x = dropzone.position.x
 			dropped_item.position.y = body.position.y
 			dropped_item.side = dropzone.side
-#			print(str(dropped_item.side))
-#			print(str(dropzone.side))
 			dropped_item.get_node("ItemSprites").show_item(body.get_carried_item_type())
 			self.add_child(dropped_item)
 
@@ -202,7 +199,7 @@ func show_winner(side):
 	var spaceship = self.find_node("ShipConstruction_" + str(side))
 	spaceship.show_jets();
 	
-	for s in range(0, 4):# todo - re-add Globals.player_nums: # 
+	for s in Globals.player_nums: # range(0, 4):# todo - re-add 
 		if s != winner:
 			var boot = self.find_node("Boot_" + str(s))
 			boot.started = true
@@ -228,7 +225,7 @@ func update_score(side, score):
 	
 
 func hide_ships():
-	for side in range(0, 4):# todo - re-add Globals.player_nums: # 
+	for side in Globals.player_nums: # range(0, 4):# todo - re-add 
 		var spaceship = self.find_node("ShipConstruction_" + str(side))
 		if spaceship:
 			spaceship.visible = false
