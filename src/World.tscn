@@ -212,6 +212,10 @@ stream = ExtResource( 10 )
 stream = ExtResource( 7 )
 autoplay = true
 
+[node name="Timer_SpawnCollectable" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_SpaenEnemyTimer_timeout"]
 [connection signal="body_entered" from="CanvasLayer/Ships/DropzoneArea_0" to="." method="_on_DropzoneArea_0_body_entered"]
 [connection signal="area_entered" from="CanvasLayer/Ships/LandingArea_0" to="." method="_on_LandingArea_0_area_entered"]
@@ -221,3 +225,4 @@ autoplay = true
 [connection signal="area_entered" from="CanvasLayer/Ships/LandingArea_2" to="." method="_on_LandingArea_2_area_entered"]
 [connection signal="body_entered" from="CanvasLayer/Ships/DropzoneArea_3" to="." method="_on_DropzoneArea_3_body_entered"]
 [connection signal="area_entered" from="CanvasLayer/Ships/LandingArea_3" to="." method="_on_LandingArea_3_area_entered"]
+[connection signal="timeout" from="Timer_SpawnCollectable" to="." method="_on_Timer_SpawnCollectable_timeout"]

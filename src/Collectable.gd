@@ -1,19 +1,14 @@
 extends KinematicBody2D
 
-var side : int
-var type
 
 func _physics_process(_delta):
 	var motion = Vector2(0, 40)
 	self.move_and_slide(motion)
 	pass
-	
 
 
-func _on_CollectArea2D_body_entered(body):
+func _on_Area2D_Collect_body_entered(body):
 	if body.is_in_group("players"):
-		if body.side == side:
-			body.carry_item(type)
-			self.queue_free()
-			pass
+		body.inc_score(10)
+		self.queue_free()
 	pass

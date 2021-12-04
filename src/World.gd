@@ -5,6 +5,8 @@ const spawned_item_class = preload("res://SpawnedItem.tscn")
 const dropped_item_class = preload("res://DroppedItem.tscn")
 const enemy_class = preload("res://Enemy.tscn")
 const expl_class = preload("res://Explosion.tscn")
+const collectable_class = preload("res://Collectable.tscn")
+
 
 var game_over = false
 var winner : int
@@ -206,4 +208,15 @@ func enemy_destroyed():
 	$AudioStreamPlayer_EnemyDestroyed.play()
 	pass
 	
+	
+func _on_Timer_SpawnCollectable_timeout():
+	var item = collectable_class.instance()
+	item.position = Vector2(Globals.rnd.randi_range(50, 450), -10)
+	call_deferred("add_child", item)
+	pass
+
+
+func update_scores():
+	#todo
+	pass
 	
