@@ -14,7 +14,7 @@ func _on_CollectArea2D_body_entered(body):
 	if body.is_in_group("players"):
 		if body.side == side:
 			body.carry_item(type)
-			body.inc_score(10)
+			body.inc_score(Globals.PTS_FOR_COLLECTING_SHIP)
 			self.queue_free()
 			pass
 	pass

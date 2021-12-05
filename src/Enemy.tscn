@@ -49,6 +49,7 @@ shape = SubResource( 1 )
 
 [node name="Fireball" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="AlternateColours" parent="Fireball" instance=ExtResource( 6 )]

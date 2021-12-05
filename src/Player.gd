@@ -118,6 +118,7 @@ func _physics_process(_delta):
 				else:
 					laser.position = $MuzzlePosition_Right.global_position
 				laser.dir = Vector2(last_dir, 0)
+				laser.shooter = self
 				main.add_child(laser)
 				$AudioStreamPlayer_Shoot.play()
 				can_shoot = false

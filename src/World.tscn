@@ -142,7 +142,6 @@ __meta__ = {
 }
 
 [node name="WinnerNode" type="Node2D" parent="CanvasLayer/CenterContainer"]
-visible = false
 position = Vector2( 118.432, 105.833 )
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/WinnerNode"]
@@ -166,6 +165,7 @@ custom_fonts/font = ExtResource( 8 )
 text = "PLAYER X IS THE WINNER"
 
 [node name="WinnerSprite" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer/VBoxContainer" instance=ExtResource( 9 )]
+position = Vector2( 332.055, 25.6621 )
 scale = Vector2( 4, 4 )
 
 [node name="AnimationPlayer_WinnerSprite" type="AnimationPlayer" parent="CanvasLayer/CenterContainer/WinnerNode/CenterContainer/VBoxContainer/WinnerSprite"]

@@ -7,6 +7,12 @@ const NO_ENEMIES = false and !RELEASE_MODE
 
 enum ObjectType {Fuel, Ship1, Ship2, Ship3}
 
+const PTS_FOR_DIAMOND = 150
+const PTS_FOR_SHOOTING_ENEMY = 10
+const PTS_FOR_COLLECTING_SHIP = 50
+#const PTS_FOR_WINNING = 200
+const PTS_FOR_DROPPING_SHIP = 50
+
 # Other settings
 var MUSIC_ON = true
 

@@ -61,6 +61,7 @@ func _on_Area2D_body_entered(body):
 		return
 	elif body.is_in_group("lasers"):
 		main.show_explosion(self)
+		body.shooter.inc_score(Globals.PTS_FOR_SHOOTING_ENEMY)
 		self.queue_free()
 		return
 		

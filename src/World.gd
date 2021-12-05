@@ -146,7 +146,7 @@ func body_entered_dropzone_area(dropzone, body):
 		
 	if body.is_carrying_item():
 		if body.side == dropzone.side:
-			body.inc_score(10)
+			body.inc_score(Globals.PTS_FOR_DROPPING_SHIP)
 			var dropped_item = dropped_item_class.instance()
 			dropped_item.position.x = dropzone.position.x
 			dropped_item.position.y = body.position.y
