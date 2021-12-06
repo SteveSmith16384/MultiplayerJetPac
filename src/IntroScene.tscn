@@ -83,6 +83,11 @@ position = Vector2( 241.905, 246.945 )
 position = Vector2( 30.4851, 1.68943 )
 side = -1
 
+[node name="SinglePlayerSprite2" parent="Rotated" instance=ExtResource( 7 )]
+position = Vector2( -99.2867, 4.20929 )
+flip_h = true
+side = -1
+
 [node name="Sprite" type="Sprite" parent="Rotated"]
 position = Vector2( -31.5198, 0.0654449 )
 scale = Vector2( 2, 2 )

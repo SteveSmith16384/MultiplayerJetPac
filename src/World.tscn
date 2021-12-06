@@ -142,6 +142,7 @@ __meta__ = {
 }
 
 [node name="WinnerNode" type="Node2D" parent="CanvasLayer/CenterContainer"]
+visible = false
 position = Vector2( 118.432, 105.833 )
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/WinnerNode"]
