@@ -1,6 +1,6 @@
 # MULTIPLAYER JETPAC
 
-A multiplayer version of the classic game Jet-Pac, originally written and published by Ultimate Play-the-Game.
+A multiplayer party version of the classic game Jet-Pac, originally written and published by Ultimate Play-the-Game.
 
 Programmed by Stephen Smith (stephen.carlylesmith@googlemail.com).  Twitter: @stephencsmith
 
@@ -38,4 +38,7 @@ Since the app is not signed for a Mac (I don't even have a Mac), it shows "Appli
 * Player select music from https://opengameart.org/content/5-chiptunes-action
 * Thanks to Mikhail Sudakov for help on running the game on Macs.
 
+
+## Source
+The source is available at https://github.com/SteveSmith16384/MultiplayerJetPac 
 

@@ -191,35 +191,36 @@ __meta__ = {
 [node name="Score_0" type="Label" parent="CanvasLayer/Scores/HBoxContainer"]
 margin_right = 47.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 12 )
 text = "SCORE:0"
 
 [node name="Score_1" type="Label" parent="CanvasLayer/Scores/HBoxContainer"]
 margin_left = 77.0
 margin_right = 124.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.0941176, 1, 0, 1 )
+custom_fonts/font = ExtResource( 12 )
 text = "SCORE:0"
 
 [node name="Score_2" type="Label" parent="CanvasLayer/Scores/HBoxContainer"]
 margin_left = 154.0
 margin_right = 201.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.917647, 1, 0, 1 )
+custom_fonts/font = ExtResource( 12 )
 text = "SCORE:0"
 
 [node name="Score_3" type="Label" parent="CanvasLayer/Scores/HBoxContainer"]
 margin_left = 231.0
 margin_right = 278.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0, 1, 0.960784, 1 )
+custom_fonts/font = ExtResource( 12 )
 text = "SCORE:0"
 
 [node name="TVShader" parent="CanvasLayer" instance=ExtResource( 11 )]
+visible = false
 
 [node name="AudioStreamPlayer_EnemyDestroyed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
