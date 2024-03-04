@@ -96,9 +96,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 8.00394, 0.927536 )
 
-[node name="Player" type="KinematicBody2D" groups=[
-"players",
-]]
+[node name="Player" type="KinematicBody2D" groups=["players"]]
 script = ExtResource( 2 )
 
 [node name="LoopAround" parent="." instance=ExtResource( 5 )]

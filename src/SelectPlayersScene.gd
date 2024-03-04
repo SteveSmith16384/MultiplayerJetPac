@@ -7,7 +7,9 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().change_scene("res://IntroScene.tscn")
+		var _unused = get_tree().change_scene("res://IntroScene.tscn")
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = not OS.window_fullscreen
 		
 	for i in range(0,4):
 		if Input.is_action_just_pressed("primary_fire" + str(i)) or Input.is_action_just_pressed("jump" + str(i)):
@@ -22,7 +24,7 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("start_game"):
 		if Globals.player_nums.size() > 0:
-			get_tree().change_scene("res://World.tscn")
+			var _unused = get_tree().change_scene("res://World.tscn")
 	pass
 	
 

@@ -8,8 +8,8 @@ func _ready():
 	show_ship(0)
 	$AudioStreamPlayer_Loaded.stream = load("res://assets/sfx/sfx_movement_portal" + str(side+1) + ".wav")
 	
-	if Globals.RELEASE_MODE == false:
-		level = 8
+#	if Globals.RELEASE_MODE == false:
+#		level = 8
 	pass
 	
 	

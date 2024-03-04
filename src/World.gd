@@ -50,13 +50,15 @@ func set_player_start_pos(player):
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().change_scene("res://SelectPlayersScene.tscn")
+		var _unused = get_tree().change_scene("res://SelectPlayersScene.tscn")
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = not OS.window_fullscreen
 		
 	if game_over:
 		var ship = self.find_node("ShipConstruction_" + str(winner))
 		ship.position.y -= delta * 40
 		if ship.position.y < -200:
-			get_tree().change_scene("res://World.tscn")
+			var _unused = get_tree().change_scene("res://World.tscn")
 
 	pass
 

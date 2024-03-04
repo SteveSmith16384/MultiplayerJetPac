@@ -30,7 +30,6 @@ Globals="*res://Globals.gd"
 window/size/width=512
 window/size/height=384
 window/size/resizable=false
-window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
@@ -124,6 +123,11 @@ primary_fire3={
 start_game={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+toggle_fullscreen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
