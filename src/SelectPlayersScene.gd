@@ -5,7 +5,7 @@ func _ready():
 	pass
 	
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		var _unused = get_tree().change_scene("res://IntroScene.tscn")
 	if Input.is_action_just_pressed("toggle_fullscreen"):

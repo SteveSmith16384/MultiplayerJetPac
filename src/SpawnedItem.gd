@@ -5,7 +5,7 @@ var type
 
 func _physics_process(_delta):
 	var motion = Vector2(0, 40)
-	self.move_and_slide(motion)
+	var _unused = self.move_and_slide(motion)
 	pass
 	
 

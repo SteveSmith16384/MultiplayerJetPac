@@ -154,7 +154,7 @@ func body_entered_dropzone_area(dropzone, body):
 			dropped_item.position.y = body.position.y
 			dropped_item.side = dropzone.side
 			dropped_item.get_node("ItemSprites").show_item(body.get_carried_item_type())
-			self.add_child(dropped_item)
+			self.call_deferred("add_child", dropped_item)
 
 			body.remove_item()
 			pass
